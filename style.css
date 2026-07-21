@@ -2489,13 +2489,40 @@ main {
 }
 .cert-modal-meta h4{ margin: 0 0 6px; color: var(--text-main, var(--text)); }
 .cert-modal-meta p{ margin: 0; color: var(--text-muted, var(--muted)); }
-
 /* Mobile tweaks */
 @media (max-width: 520px){
-  .cert-carousel{ padding: 10px 44px; }
-  .cert-left{ left: 4px; }
-  .cert-right{ right: 4px; }
-  .cert-modal-content{ margin: 40px auto; }
+
+  .cert-carousel{
+    padding: 10px 44px;
+  }
+
+  .cert-left{
+    left: 4px;
+  }
+
+  .cert-right{
+    right: 4px;
+  }
+
+  .cert-modal-content{
+    margin: 40px auto;
+  }
+
+  /* ==========================
+     FOOTER MOBILE
+  ========================== */
+
+.footer-links{
+    justify-content: space-evenly;
+    gap: 8px;
+    padding: 0 10px;
+}
+
+.footer-icon{
+    font-size: 19px;
+    padding: 9px;
+}
+
 }
 /* =========================
    CV (THUMBNAIL + MODAL)
