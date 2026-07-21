@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/fyfyTJnk/Logo.png">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- HOME -->
+    <div id="home">
+      <div class="title">For You</div>
+      <div class="subtitle">Un pequeño espacio solo para ti.</div>
+
+      <div class="app-grid">
+
+        <!-- MENSAJE<div class="app-icon" onclick="openSection('mensaje')">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M4 4h16v12H5.17L4 17.17V4M4 2a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4z"/></svg>
+        <div class="icon-label">Mensaje</div>
+      </div>
+ -->
+
+        <!-- Lee -->
+        <div class="app-icon" onclick="openSection('carta')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#fff">
+            <path
+              d="M528.3 46.5l-139.8 0c-48.1 0-89.9 33.3-100.4 80.3-10.6-47-52.3-80.3-100.4-80.3L48 46.5C21.5 46.5 0 68 0 94.5L0 340.3c0 26.5 21.5 48 48 48l89.7 0c102.2 0 132.7 24.4 147.3 75 .7 2.8 5.2 2.8 6 0 14.7-50.6 45.2-75 147.3-75l89.7 0c26.5 0 48-21.5 48-48l0-245.7c0-26.4-21.3-47.9-47.7-48.1zM242 311.9c0 1.9-1.5 3.5-3.5 3.5l-160.3 0c-1.9 0-3.5-1.5-3.5-3.5l0-22.9c0-1.9 1.5-3.5 3.5-3.5l160.4 0c1.9 0 3.5 1.5 3.5 3.5l0 22.9-.1 0zm0-60.9c0 1.9-1.5 3.5-3.5 3.5l-160.3 0c-1.9 0-3.5-1.5-3.5-3.5l0-22.9c0-1.9 1.5-3.5 3.5-3.5l160.4 0c1.9 0 3.5 1.5 3.5 3.5l0 22.9-.1 0zm0-60.9c0 1.9-1.5 3.5-3.5 3.5l-160.3 0c-1.9 0-3.5-1.5-3.5-3.5l0-22.9c0-1.9 1.5-3.5 3.5-3.5l160.4 0c1.9 0 3.5 1.5 3.5 3.5l0 22.9-.1 0zM501.3 311.8c0 1.9-1.5 3.5-3.5 3.5l-160.3 0c-1.9 0-3.5-1.5-3.5-3.5l0-22.9c0-1.9 1.5-3.5 3.5-3.5l160.4 0c1.9 0 3.5 1.5 3.5 3.5l0 22.9-.1 0zm0-60.9c0 1.9-1.5 3.5-3.5 3.5l-160.3 0c-1.9 0-3.5-1.5-3.5-3.5l0-22.9c0-1.9 1.5-3.5 3.5-3.5l160.4 0c1.9 0 3.5 1.5 3.5 3.5l0 22.9-.1 0zm0-60.9c0 1.9-1.5 3.5-3.5 3.5l-160.3 0c-1.9 0-3.5-1.5-3.5-3.5l0-22.8c0-1.9 1.5-3.5 3.5-3.5l160.4 0c1.9 0 3.5 1.5 3.5 3.5l0 22.8-.1 0z" />
+          </svg>
+          <div class="icon-label">Lee</div>
+        </div>
+
+        <!-- MUSICA -->
+        <div class="app-icon" onclick="openSection('musica')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M12 3v12.26A4 4 0 1 0 14 19V7h4V3h-6z" />
+          </svg>
+          <div class="icon-label">Música</div>
+        </div>
+
+        <!-- CALMA -->
+        <div class="app-icon" onclick="openSection('calma')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 0 0-18z" />
+          </svg>
+          <div class="icon-label">Calma</div>
+        </div>
+
+        <!-- HABLAR -->
+        <div class="app-icon" onclick="window.open('https://wa.link/5uo6cm','_blank')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path
+              d="M12 3C6.48 3 2 7.26 2 12.6c0 2.15.76 4.14 2 5.74L3 21l2.78-.93c1.62.85 3.5 1.33 5.47 1.33 5.52 0 10-4.26 10-9.6S17.52 3 12 3z" />
+          </svg>
+          <div class="icon-label">Hablar</div>
+        </div>
+
+        <!-- DIARIO -->
+        <div class="app-icon" onclick="openSection('diario')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M7 3h10a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V5a2 2 0 0 1 2-2h2z" />
+          </svg>
+          <div class="icon-label">Diario</div>
+        </div>
+
+        <!-- RESPIRA -->
+        <div class="app-icon" onclick="openSection('respira')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M12 2a7 7 0 0 0-7 7c0 4.5 7 13 7 13s7-8.5 7-13a7 7 0 0 0-7-7z" />
+          </svg>
+          <div class="icon-label">Respira</div>
+        </div>
+
+        <!-- GUARDADOS -->
+        <div class="app-icon" onclick="openSection('guardados')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M6 2a2 2 0 0 0-2 2v18l8-4 8 4V4a2 2 0 0 0-2-2H6z" />
+          </svg>
+          <div class="icon-label">Guardados</div>
+        </div>
+
+        <!-- GALERÍA -->
+        <div class="app-icon" onclick="openSection('galeria')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path
+              d="M21 19V5a2 2 0 0 0-2-2H5C3.89 3 3 3.9 3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2m-2 0H5V5h14v14M8.5 12.5 11 15.5l2.5-3.01L17.5 18h-11l2-2.5z" />
+          </svg>
+          <div class="icon-label">Galería</div>
+        </div>
+
+        <!-- MERECES -->
+        <div class="app-icon" onclick="openSection('mereces')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A4.49 4.49 0 0 1 6.5 4 4.78 4.78 0 0 1 12 6.09 4.78 4.78 0 0 1 17.5 4 4.49 4.49 0 0 1 22 8.5c0 3.78-3.4 6.86-8.55 11.54z" />
+          </svg>
+          <div class="icon-label">Lo que mereces</div>
+        </div>
+
+        <!-- PLANES -->
+        <div class="app-icon" onclick="openSection('planes')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M3 5h18v2H3V5m0 6h18v2H3v-2m0 6h10v2H3v-2z" />
+          </svg>
+          <div class="icon-label">Planes</div>
+        </div>
+
+        <!-- ALEATORIO -->
+        <div class="app-icon" onclick="openSection('aleatorio')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path
+              d="M14 3h7v7l-2.5-2.5-3.54 3.54-1.41-1.41L17.09 6.5 14 3m-4 14.5L6.91 17 10 13.91 8.59 12.5 5.5 15.59 3 13v7h7l-2.5-2.5L10 17.5zM4 3h7v2H4v7H2V5a2 2 0 0 1 2-2m18 18a2 2 0 0 1-2 2h-7v-2h7v-7h2v7z" />
+          </svg>
+          <div class="icon-label">Aleatorio</div>
+        </div>
+
+        <!-- ESTRELLAS -->
+        <div class="app-icon" onclick="openSection('estrellas')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M12 2 9.19 8.63 2 9.27l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-6.99L22 9.27l-7.19-.64z" />
+          </svg>
+          <div class="icon-label">Estrellas</div>
+        </div>
+
+        <!-- CHECK-IN -->
+        <div class="app-icon" onclick="openSection('checkin')">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M9 21 3 15l1.41-1.41L9 18.17l10.59-10.6L21 9l-12 12z" />
+          </svg>
+          <div class="icon-label">Check-in</div>
+        </div>
+
+        <!-- Terminal -->
+        <a href="./Heart/Heart.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff">
+            <path
+              d="M9.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L146.7 256 9.4 118.6zM224 384l256 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-256 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
+          </svg>
+          <div class="icon-label">Terminal</div>
+        </a>
+
+        <!-- Carta -->
+        <a href="./Carta/Carta.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff">
+            <path
+              d="M61.4 64C27.5 64 0 91.5 0 125.4 0 126.3 0 127.1 .1 128L0 128 0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-256-.1 0c0-.9 .1-1.7 .1-2.6 0-33.9-27.5-61.4-61.4-61.4L61.4 64zM464 192.3L464 384c0 8.8-7.2 16-16 16L64 400c-8.8 0-16-7.2-16-16l0-191.7 154.8 117.4c31.4 23.9 74.9 23.9 106.4 0L464 192.3zM48 125.4C48 118 54 112 61.4 112l389.2 0c7.4 0 13.4 6 13.4 13.4 0 4.2-2 8.2-5.3 10.7L280.2 271.5c-14.3 10.8-34.1 10.8-48.4 0L53.3 136.1c-3.3-2.5-5.3-6.5-5.3-10.7z" />
+          </svg>
+          </svg>
+          <div class="icon-label">Carta</div>
+        </a>
+
+        <!-- Bitacora<a href="./Bitacora/Bitacora.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff">
+            <path
+              d="M512 48c0-11.1-5.7-21.4-15.2-27.2s-21.2-6.4-31.1-1.4L349.5 77.5 170.1 17.6c-8.1-2.7-16.8-2.1-24.4 1.7l-128 64C6.8 88.8 0 99.9 0 112L0 464c0 11.1 5.7 21.4 15.2 27.2s21.2 6.4 31.1 1.4l116.1-58.1 179.4 59.8c8.1 2.7 16.8 2.1 24.4-1.7l128-64c10.8-5.4 17.7-16.5 17.7-28.6l0-352zM192 376.9l0-284.5 128 42.7 0 284.5-128-42.7z" />
+          </svg>
+          <div class="icon-label">Bitacora</div>
+        </a> -->
+        
+
+        <!-- Salida<a href="./Salida/salida.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#fff">
+            <path
+              d="M378.9 80c-27.3 0-53 13.1-69 35.2l-34.4 47.6c-4.5 6.2-11.7 9.9-19.4 9.9s-14.9-3.7-19.4-9.9l-34.4-47.6c-16-22.1-41.7-35.2-69-35.2-47 0-85.1 38.1-85.1 85.1 0 49.9 32 98.4 68.1 142.3 41.1 50 91.4 94 125.9 120.3 3.2 2.4 7.9 4.2 14 4.2s10.8-1.8 14-4.2c34.5-26.3 84.8-70.4 125.9-120.3 36.2-43.9 68.1-92.4 68.1-142.3 0-47-38.1-85.1-85.1-85.1zM271 87.1c25-34.6 65.2-55.1 107.9-55.1 73.5 0 133.1 59.6 133.1 133.1 0 68.6-42.9 128.9-79.1 172.8-44.1 53.6-97.3 100.1-133.8 127.9-12.3 9.4-27.5 14.1-43.1 14.1s-30.8-4.7-43.1-14.1C176.4 438 123.2 391.5 79.1 338 42.9 294.1 0 233.7 0 165.1 0 91.6 59.6 32 133.1 32 175.8 32 216 52.5 241 87.1l15 20.7 15-20.7z" />
+          </svg>
+          <div class="icon-label">¿Salimos?</div>
+        </a> -->
+        
+
+        <!-- Corazon -->
+        <a href="./Corazon/corazon.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="#fff">
+            <path
+              d="M386 439.5c-29.2 15.6-62.5 24.5-98 24.5-114.9 0-208-93.1-208-208S173.2 48 288 48c113.2 0 205.2 90.4 207.9 202.9 14.3 1.5 28.6 6 41.9 13.7 2 1.2 4 2.4 5.9 3.7 .2-4.1 .3-8.2 .3-12.3 0-141.4-114.6-256-256-256S32 114.6 32 256 146.6 512 288 512c41.4 0 80.5-9.8 115.1-27.3-5.8-12.9-12-28.5-17.2-45.2zM256 288c0 8.8 7.2 16 16 16l16 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l16 0c8.8 0 16 7.2 16 16s-7.2 16-16 16l-16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0c26.5 0 48-21.5 48-48 0-12.3-4.6-23.5-12.2-32 7.6-8.5 12.2-19.7 12.2-32 0-26.5-21.5-48-48-48l-32 0c-8.8 0-16 7.2-16 16zm-48-48a32 32 0 1 0 0-64 32 32 0 1 0 0 64zm152-44l16 0c11 0 20 9 20 20s9 20 20 20 20-9 20-20c0-33.1-26.9-60-60-60l-16 0c-33.1 0-60 26.9-60 60 0 11 9 20 20 20s20-9 20-20 9-20 20-20zM542.8 350c-2.2-18.3-12.9-34.6-28.9-43.8-28.1-16.2-63.9-6.6-80.1 21.5l-2.7 4.6c-24.5 42.5 7.9 117.9 24.4 150.8 5.1 10.1 15.5 16.1 26.8 15.5 36.7-2.2 118.2-11.7 142.8-54.2l2.7-4.6c16.2-28.1 6.6-63.9-21.5-80.1-16-9.2-35.4-10.4-52.4-3.1l-9.8 4.2-1.3-10.6z" />
+          </svg>
+          <div class="icon-label">Corazon</div>
+        </a>
+
+        <!-- Nuevo -->
+        <a href="./Girasol/index.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#fff">
+            <path
+              d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256 24.5 343.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4 163.9 504.7c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4l20.9-103.2 103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5l-58.2-87.8 58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3L433.8 110.6 413 7.3C411.4-.5 406-7 398.6-10.1s-15.8-2.2-22.5 2.2L288.4 50.3 200.6-7.9zM186.9 135.7l17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0l71.3-47.3 17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8zM239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1 -96.8 0zm144.8 0a96.4 96.4 0 1 0 -192.8 0 96.4 96.4 0 1 0 192.8 0z" />
+          </svg>
+          <div class="icon-label">Girasol</div>
+        </a>
+
+        <!-- Nuevo  -->
+        <a href="./Tulipanes/index.html" class="app-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#fff">
+            <path
+              d="M169.7 227.5c34.3 18.7 64.5 44.1 88.8 74.5 11.1 13.9 21 28.9 29.4 44.8 8.5-15.9 18.3-30.8 29.4-44.8 24.3-30.5 54.5-55.9 88.8-74.5 41.7-22.7 89.4-35.5 139.7-35.5l9.9 0c11.1 0 20.1 9 20.1 20.1 0 148-119.9 267.9-267.9 267.9l-40.2 0C119.9 480 0 360.1 0 212.1 0 201 9 192 20.1 192l9.9 0c50.4 0 98.1 12.8 139.7 35.5zM303.9 38c16.9 15.9 61.4 63.4 89 142.3-40.1 20.2-75.8 48.2-104.9 82.1-29.2-33.9-64.8-61.8-104.9-82.1 27.6-78.9 72.2-126.4 89-142.3 4.3-4.1 10-6 15.9-6s11.6 2 15.9 6z" />
+          </svg>
+          <div class="icon-label">Tulipanes</div>
+        </a>
+
+        <!-- Nuevo <a href="./disculpa/index.html" class="app-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+
+        <!-- Fondo suave -->
+        <circle cx="32" cy="32" r="30" fill="#111320" />
+        <circle cx="32" cy="32" r="29" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+
+        <!-- Corazón -->
+        <path
+          d="M32 45C31.4 44.6 25 39.9 21.4 35.7C19.5 33.6 18.5 31.3 18.5 28.9C18.5 25.4 21.1 23 24.2 23C26.3 23 28.2 24.1 29.2 25.8C30.2 24.1 32.1 23 34.2 23C37.3 23 39.9 25.4 39.9 28.9C39.9 31.3 38.9 33.6 37 35.7C33.4 39.9 31.4 41.7 32 45Z"
+          fill="#F472B6" stroke="#F9A8D4" stroke-width="1.5" />
+
+        <!-- Curita / venda (gesto de disculpa / reparar) -->
+        <rect x="26" y="30.5" width="12" height="5" rx="2.5" fill="#111320" stroke="#F9A8D4" stroke-width="1.2" />
+        <circle cx="29" cy="33" r="0.8" fill="#F9A8D4" />
+        <circle cx="32" cy="33" r="0.8" fill="#F9A8D4" />
+        <circle cx="35" cy="33" r="0.8" fill="#F9A8D4" />
+
+        <!-- Brillito suave -->
+        <circle cx="24" cy="22" r="3" fill="rgba(255,255,255,0.12)" />
+        </svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- MENSAJE -->
+    <div class="section" id="mensaje">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Mensaje del Día</h2>
+      <div class="chat-box">
+        <div class="bubble her">Solo necesitaba un respiro hoy.</div>
+        <div class="bubble me">Y está bien. Mereces más de uno.</div>
+        <div class="bubble me">Si puedo hacer tu día un poco más ligero, aquí estoy.</div>
+      </div>
+    </div>
+
+    <!-- CARTA -->
+    <div class="section" id="carta">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Una Carta para Ti</h2>
+      <div class="text-box">
+        Hay personas con las que uno habla porque sí,
+        y hay personas con las que uno se queda conversando sin mirar la hora ⏳✨
+        <br><br>
+        Contigo me pasa lo segundo.
+        <br><br>
+        No lo planeé, no lo pensé demasiado…
+        simplemente se volvió natural querer seguir la charla un rato más 😊
+        <br><br>
+        Me gusta cómo piensas,
+        cómo dices las cosas,
+        incluso esos cambios de tema inesperados que hacen todo más interesante 🤭
+        <br><br>
+        No es una declaración épica ni nada dramático,
+        solo un dato honesto:
+        hablar contigo se siente bien 💫
+        Y eso hoy no es tan común.
+      </div>
+
+    </div>
+
+    <!-- MUSICA -->
+    <div class="section" id="musica">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Música para Acompañarte</h2>
+      <iframe src="https://open.spotify.com/embed/artist/5M9Bb4adKAgrOFOhc05Y50?utm_source=generator" height="352"
+        frameborder="0" allow="autoplay; encrypted-media"></iframe>
+    </div>
+
+    <!-- CALMA -->
+    <div class="section" id="calma">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Un Momento de Calma</h2>
+      <div class="text-box">
+        Está bien si hoy el día se sintió más largo de lo normal.
+        <br><br>
+        Está bien si estás cansada, si no tienes muchas ganas de hablar,
+        o si solo quieres quedarte un rato en silencio.
+        <br><br>
+        No todos los días tienen que ser brillantes,
+        a veces basta con respirar despacio y dejar que el ruido se apague un poco 🌙
+        <br><br>
+        Si necesitas un momento de calma,
+        aquí hay uno.
+        <br><br>
+        Sin preguntas, sin presión,
+        solo compañía tranquila 🤍
+      </div>
+
+    </div>
+
+    <!-- DIARIO -->
+    <div class="section" id="diario">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Diario Suave</h2>
+      <div class="text-box" id="diarioText">
+          Hoy tu única tarea no es impresionar a nadie,
+          ni resolverlo todo,
+          ni tener todas las respuestas.
+          Hoy tu única tarea es ser un poco más amable contigo misma que ayer.
+          Háblate con paciencia.
+          Perdónate lo que aún estás aprendiendo.
+          Reconoce lo que sí hiciste, incluso si fue pequeño.
+          A veces crecer no es avanzar más rápido,
+          es tratarte mejor mientras avanzas 🌿
+      </div>
+    </div>
+
+    <!-- RESPIRA -->
+    <div class="section" id="respira">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Respira Conmigo</h2>
+      <div class="breathe-wrap">
+        <div class="breathe-circle"></div>
+        <div class="breathe-text">
+          Inhala cuando el círculo crece.<br>
+          Exhala cuando vuelva a hacerse pequeño.<br><br>
+          Solo eso por unos segundos.
+        </div>
+      </div>
+    </div>
+
+    <!-- GUARDADOS -->
+    <div class="section" id="guardados">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Mensajes Guardados</h2>
+      <div class="text-box">
+        <div class="card-list">
+          <div class="card-item">No tienes que poder con todo hoy. Solo con lo que puedas.</div>
+          <div class="card-item">Lo que sientes importa, aunque no lo pongas en palabras.</div>
+          <div class="card-item">No estás sola, aunque a veces tu día se empeñe en decir lo contrario.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GALERÍA -->
+    <div class="section" id="galeria">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Atardeceres para Ti</h2>
+      <div class="text-box" style="margin-bottom:12px;">
+        Un pequeño lugar para tus atardeceres favoritos.
+        Toca una foto para verla en grande.
+      </div>
+
+      <div id="galeriaGrid" class="galeria-grid"></div>
+
+      <div id="visor" class="visor">
+        <img id="visorImg" />
+      </div>
+    </div>
+
+    <!-- MERECES -->
+    <div class="section" id="mereces">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Cosas que Mereces</h2>
+      <div class="text-box">
+        <div class="card-list">
+          <div class="card-item">Descansar sin sentir culpa.</div>
+          <div class="card-item">Que te escuchen cuando quieras hablar.</div>
+          <div class="card-item">Días ligeros, sin tanta carga.</div>
+          <div class="card-item">Espacios donde puedas ser tú, sin explicar nada.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANES -->
+    <div class="section" id="planes">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Planes Pendientes</h2>
+      <div class="text-box">
+        <div class="card-list">
+          <div class="card-item">Un café tranquilo en algún lugar que te guste.</div>
+          <div class="card-item">Ver un atardecer sin apuro.</div>
+          <div class="card-item">Actualizar esa pantalla cuando se pueda.</div>
+          <div class="card-item">Tener una conversación larga, sin prisa.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALEATORIO -->
+    <div class="section" id="aleatorio">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Algo Bonito al Azar</h2>
+      <div class="text-box" id="aleatorioText">
+        Hoy el azar dice: que te tomes al menos un momento para ti.
+      </div>
+    </div>
+
+    <!-- ESTRELLAS -->
+    <div class="section" id="estrellas">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>Lluvia de Estrellas</h2>
+      <div class="stars-box" id="starsBox"></div>
+    </div>
+
+    <!-- CHECK-IN -->
+    <div class="section" id="checkin">
+      <div class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24">
+          <path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+        </svg>
+        Volver
+      </div>
+      <h2>¿Cómo Va Tu Día?</h2>
+      <div class="text-box">
+        <div>Elige una opción. No es una encuesta, solo un pequeño check-in.</div>
+        <div class="check-buttons">
+          <button class="check-btn" onclick="setCheckin(1)">Estoy bien, solo cansada.</button>
+          <button class="check-btn" onclick="setCheckin(2)">Estoy un poco cargada.</button>
+          <button class="check-btn" onclick="setCheckin(3)">Siento que necesito hablar.</button>
+        </div>
+        <div class="check-response" id="checkResponse">
+          Lo que elijas está bien. No tienes que justificarlo.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <script src="./app.js" defer></script>
+  <!-- Créditos -->
+  <div style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 14px;
+    backdrop-filter: blur(6px);
+    border-radius: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    z-index: 9999;
+">
+    by <a href="https://github.com/CHALLCOJAREK" target="_blank"
+      style="color: rgba(255, 255, 255, 0.75); text-decoration: none; font-weight: bold;">
+      Jarek
+    </a>
+  </div>
+
+</body>
+
+</html>

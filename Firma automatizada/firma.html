@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Card Generator</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png">
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- INTRO LOADER -->
+  <div id="intro" class="intro">
+    <div class="loader"></div>
+  </div>
+
+  <!-- CANVAS BG -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- LAYOUT GENERAL -->
+  <main class="layout">
+
+    <!-- CONTENEDOR PREMIUM TIPO QR GENERATOR -->
+    <div class="main-card">
+
+      <!-- =============================== -->
+      <!-- HEADER SUPERIOR DEL CONTENEDOR -->
+      <!-- =============================== -->
+      <header class="main-header">
+        <a href="../index.html" class="header-icon">
+          <i class="fa-regular fa-id-card"></i>
+        </a>
+        <h1>Card Generator</h1>
+      </header>
+
+      <!-- =============================== -->
+      <!--    CONFIGURACIÓN — IZQUIERDA   -->
+      <!-- =============================== -->
+      <section class="left-panel">
+
+        <header class="editor-header">
+          <h2>Configurar Tarjeta</h2>
+        </header>
+
+        <div class="editor-group">
+          <label>Nombre Completo</label>
+          <input id="inputNombre" type="text" placeholder="Escribe tu nombre" />
+        </div>
+
+        <div class="editor-group">
+          <label>Cargo / Rol</label>
+          <input id="inputCargo" type="text" placeholder="Ej: Consultor IA & RPA" />
+        </div>
+
+        <div class="editor-group">
+          <label>Teléfono</label>
+          <input id="inputTelefono" type="text" placeholder="Ej: +51 900 000 000" />
+        </div>
+
+        <div class="editor-group">
+          <label>Correo</label>
+          <input id="inputEmail" type="email" placeholder="correo@empresa.com" />
+        </div>
+
+        <div class="editor-group">
+          <label>Sitio Web</label>
+          <input id="inputWeb" type="text" placeholder="https://tusitio.com" />
+        </div>
+
+        <div class="editor-group">
+          <label>LinkedIn</label>
+          <input id="inputLinkedin" type="text" placeholder="linkedin.com/in/usuario" />
+        </div>
+
+        <div class="editor-group">
+          <label>Foto</label>
+          <input id="inputFoto" type="file" accept="image/*">
+        </div>
+
+        <div class="editor-group">
+          <label>Logo</label>
+          <input id="inputLogo" type="file" accept="image/*">
+        </div>
+
+        <div class="editor-actions">
+          <button id="btnActualizar">Actualizar Vista</button>
+          <button id="btnVerHtml">Ver HTML</button>
+          <button id="btnOutlook">Generar Outlook</button>
+        </div>
+
+      </section>
+
+      <!-- =============================== -->
+      <!--   PREVIEW — DERECHA            -->
+      <!-- =============================== -->
+      <section class="right-panel">
+
+        <div id="tarjeta" class="tarjeta">
+
+          <div class="media-zone">
+            <img id="previewFoto" class="preview-foto" alt="" />
+            <img id="previewLogo" class="preview-logo" alt="" />
+          </div>
+
+          <div class="info-zone">
+            <p id="previewNombre" class="preview-nombre"></p>
+            <p id="previewCargo" class="preview-cargo"></p>
+            <div id="previewTelefono" class="preview-dato"></div>
+            <div id="previewEmail" class="preview-dato"></div>
+            <div id="previewWeb" class="preview-dato"></div>
+            <div id="previewLinkedin" class="preview-dato"></div>
+          </div>
+
+        </div>
+
+        <!-- Código generado -->
+        <pre id="codigoHtml"></pre>
+
+      </section>
+
+    </div>
+    <!-- FIN MAIN-CARD -->
+
+  </main>
+
+  <script src="./script.js"></script>
+
+  <!-- CRÉDITOS -->
+  <div class="credits">
+    by 
+    <a href="https://github.com/CHALLCOJAREK" target="_blank">Jarek</a>
+  </div>
+
+</body>
+</html>

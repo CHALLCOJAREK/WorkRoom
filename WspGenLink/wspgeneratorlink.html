@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>RapiLink – J² Tools</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png">
+
+  <!-- Fuente e íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Tus estilos -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- INTRO LOADER -->
+  <div id="intro">
+    <div class="intro-inner">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <!-- 🔵 CANVAS BACKGROUND (nuevo para este sistema) -->
+  <canvas id="bg-canvas"></canvas>
+
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="app">
+
+    <!-- HEADER -->
+    <header class="app-header">
+  <a href="../index.html">
+    <div class="app-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </div>
+  </a>
+
+  <div class="app-title">
+    <span class="title-main">RapiLink</span>
+    <span class="title-sub">Generador de enlace WhatsApp</span>
+  </div>
+</header>
+
+
+    <p class="app-subtitle">Escribe el número y el mensaje.</p>
+
+    <!-- PANEL -->
+    <section class="panel">
+
+      <div class="panel-title">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Datos del mensaje</span>
+      </div>
+
+      <!-- Número -->
+      <div class="field-group">
+        <label>Número de WhatsApp</label>
+
+        <div class="row">
+          <div class="country-pill">
+            <i class="fa-solid fa-globe"></i>
+            <select id="countryCode">
+              <option value="51">+51 Perú</option>
+              <option value="54">+54 Argentina</option>
+              <option value="56">+56 Chile</option>
+              <option value="57">+57 Colombia</option>
+              <option value="52">+52 México</option>
+              <option value="">Otro (sin prefijo)</option>
+            </select>
+          </div>
+
+          <input
+            type="text"
+            id="phone"
+            class="input-text"
+            placeholder="Ejemplo: 987654321"
+          />
+        </div>
+      </div>
+
+      <!-- Mensaje -->
+      <div class="field-group">
+        <label>Mensaje</label>
+        <textarea
+          id="message"
+          class="input-text"
+          placeholder="Escribe tu mensaje..."
+        ></textarea>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="actions">
+        <button class="btn-primary" id="btnGenerate">
+          <i class="fa-solid fa-link"></i>
+          Generar enlace
+        </button>
+
+        <button class="btn-secondary" id="btnOpen" disabled>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          Abrir
+        </button>
+
+        <button class="btn-secondary" id="btnCopy" disabled>
+          <i class="fa-solid fa-copy"></i>
+          Copiar
+        </button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="output-card" id="outputCard" style="display:none;">
+        <div class="output-header">
+          <span><strong>Enlace generado</strong></span>
+        </div>
+
+        <div class="output-link-row">
+          <div class="output-text" id="outputLink"></div>
+        </div>
+      </div>
+
+      <p class="hint">
+        <i class="fa fa-info-circle"></i>
+        El número debe existir en WhatsApp para que funcione.
+      </p>
+
+    </section>
+
+  </div>
+
+  <!-- JS -->
+  <script src="./app.js" defer></script>
+
+  <!-- Créditos limpios -->
+  <div style="
+    position: fixed;
+    bottom: 16px;
+    right: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    z-index: 9999;
+  ">
+    by 
+    <a href="https://github.com/CHALLCOJAREK"
+       target="_blank"
+       style="color: rgba(255, 255, 255, 0.75);
+              text-decoration: none;
+              font-weight: 600;">
+        Jarek
+    </a>
+  </div>
+
+</body>
+</html>

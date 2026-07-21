@@ -1,0 +1,24 @@
+
+# Ignorar submódulos antiguos
+.gitmodules
+.git/modules/
+
+# Archivos temporales
+*.log
+*.tmp
+*.DS_Store
+Thumbs.db
+
+# Node (si algún día usas)
+node_modules/
+
+# Python (por si usas backend)
+__pycache__/
+*.pyc
+
+# Entornos virtuales
+.venv/
+venv/
+
+# Archivos locales de entorno
+.env

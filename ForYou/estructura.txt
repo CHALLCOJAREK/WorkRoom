@@ -1,0 +1,109 @@
+📦 PulseForge
+ ┣ 📜 app.js
+ ┣ 📜 estructura.txt
+ ┣ 📜 gitpush.py
+ ┣ 📜 index.html
+ ┣ 📜 README.md
+ ┣ 📜 styles.css
+📂 .git  (contenido limitado)
+ ┃ 📂 hooks
+ ┃ 📂 info
+ ┃ 📂 logs
+ ┃ 📂 objects
+ ┃ 📂 refs
+📂 Bitacora
+ ┣ 📜 app.js
+ ┣ 📜 Bitacora.html
+ ┣ 📜 styles.css
+📂 Carta
+ ┣ 📜 app.js
+ ┣ 📜 Carta.html
+ ┣ 📜 styles.css
+📂 Corazon
+ ┣ 📜 corazon.html
+ ┣ 📜 script.js
+ ┣ 📜 styles.css
+📂 disculpa
+ ┣ 📜 data.json
+ ┣ 📜 flores.html
+ ┣ 📜 index.html
+ ┣ 📜 styles.css
+📂 Galaxia
+ ┣ 📜 index.html
+ ┣ 📜 script.js
+ ┣ 📜 styles.css
+📂 Girasol
+ ┣ 📜 dog.gif
+ ┣ 📜 index.html
+📂 Heart
+ ┣ 📜 Heart.html
+ ┣ 📜 script.js
+ ┣ 📜 style.css
+📂 mi-pagina
+ ┣ 📜 .env
+ ┣ 📜 01 Julissa.html
+ ┣ 📜 02 Julissa.html
+ ┣ 📜 03 Julissa.html
+ ┣ 📜 04 Julissa.html
+ ┣ 📜 05 Julissa.html
+ ┣ 📜 06 Julissa.html
+ ┣ 📜 07 Julissa.html
+ ┣ 📜 2XLBoEo21oTzaNhaThbsmzPa1Th-desktop-removebg-preview.png
+ ┣ 📜 2XLBoEo21oTzaNhaThbsmzPa1Th-desktop.jpg
+ ┣ 📜 580b585b2edbce24c47b2695.png
+ ┣ 📜 5a5a7423d9fd77c6ebe4e1a463759dd2.jpg
+ ┣ 📜 6ed6ccb61de77746312009187aeeb881.png
+ ┣ 📜 763-7630320_ramo-flores-dibujo-boceto-dise-o-floral-illustration-removebg-preview.png
+ ┣ 📜 763-7630320_ramo-flores-dibujo-boceto-dise-o-floral-illustration.png
+ ┣ 📜 b9177b7f958f08e5ffecb9692c330306.jpg
+ ┣ 📜 background.jpg
+ ┣ 📜 baseiBit.html
+ ┣ 📜 black-white-colouring-book-line-600nw-2548411593.webp
+ ┣ 📜 christ.tsx
+ ┣ 📜 demo.json
+ ┣ 📜 demo2.json
+ ┣ 📜 draw.txt
+ ┣ 📜 f20644c36647a8bd0602d319d8424303.jpg
+ ┣ 📜 fenix_session.session
+ ┣ 📜 fenix_session.session-journal
+ ┣ 📜 Grupo 1 Mejorado.xlsx
+ ┣ 📜 GRUPO 1 V2.xlsx
+ ┣ 📜 GRUPO 2.xlsx
+ ┣ 📜 GRUPO1.xlsx
+ ┣ 📜 hola.js
+ ┣ 📜 image.ico
+ ┣ 📜 image.png
+ ┣ 📜 imagen_lineas_blancas.jpg
+ ┣ 📜 imagen_picasso_lineas.jpg
+ ┣ 📜 imagen_picasso_lineas_azules.jpg
+ ┣ 📜 julisaa.py
+ ┣ 📜 Julissa.jpg
+ ┣ 📜 Julissa2.py
+ ┣ 📜 Julissa3.py
+ ┣ 📜 julissa4.py
+ ┣ 📜 Julissa5.py
+ ┣ 📜 Julissa6.py
+ ┣ 📜 link.py
+ ┣ 📜 musica.mp3
+ ┣ 📜 pagina.html
+ ┣ 📜 Perfect.mp3
+ ┣ 📜 Perfect.mp4
+ ┣ 📜 perfil.png
+ ┣ 📜 PLANOS GRUPO 2.xlsx
+ ┣ 📜 Reporte_Descargas.xlsx
+ ┣ 📜 rosa_dibujada.py
+ ┣ 📜 s11728_flores_isolated_on_white_background_68b500fb-4ab1-4cc8-99ec-08f8166f489d_0-photoroom-300x300.png
+ ┣ 📜 tarea.sql
+ ┣ 📜 telebot.py
+ ┣ 📜 TITULOS GRUPO1.xlsx
+ ┣ 📜 vigilante.py
+📂 Rosas
+ ┣ 📜 Juli.py
+ ┣ 📜 rosas.json
+📂 Salida
+ ┣ 📜 app.js
+ ┣ 📜 salida.html
+ ┣ 📜 styles.css
+📂 Tulipanes
+ ┣ 📜 data.json
+ ┣ 📜 index.html

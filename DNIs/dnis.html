@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador DNI A4 – J² Tools</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png" />
+
+    <!-- TIPOGRAFÍA -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <!-- INTRO -->
+    <div id="introLoader" class="intro-loader" aria-hidden="true">
+        <div class="intro-loader__core">
+            <div class="intro-loader__ring"></div>
+            <div class="intro-loader__ring intro-loader__ring--delay"></div>
+            <div class="intro-loader__glow"></div>
+            <p class="intro-loader__text">J² Tools</p>
+        </div>
+    </div>
+
+    <!-- CANVAS MOLÉCULAS -->
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+    <!-- FONDO -->
+    <div class="page-bg" aria-hidden="true">
+        <div class="bg-orb bg-orb--1"></div>
+        <div class="bg-orb bg-orb--2"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <main class="app-shell">
+
+        <!-- HEADER SIMPLE -->
+        <header class="app-header glass-card">
+            <a href="../index.html" class="brand" title="Ir al inicio">
+                <div class="brand__icon">
+                    <i class="fa-solid fa-id-card-clip"></i>
+                </div>
+                <div class="brand__text">
+                    <span class="brand__chip">J² Tools</span>
+                    <h1>Generador DNI en A4</h1>
+                    <p>Anverso y reverso en proporción lista para imprimir.</p>
+                </div>
+            </a>
+
+            <div class="header-status">
+                <span class="status-pill">
+                    <i class="fa-solid fa-circle-check"></i>
+                    Vista activa
+                </span>
+            </div>
+        </header>
+
+        <!-- WORKSPACE -->
+        <section class="workspace">
+
+            <!-- PANEL IZQUIERDO -->
+            <aside class="control-panel glass-card">
+                <div class="section-head">
+                    <div>
+                        <span class="section-kicker">
+                            <i class="fa-solid fa-sliders"></i>
+                            Configuración
+                        </span>
+                    </div>
+                </div>
+
+                <div class="upload-list">
+
+                    <article class="upload-item">
+                        <div class="upload-item__head">
+                            <div class="upload-item__icon">
+                                <i class="fa-solid fa-image-portrait"></i>
+                            </div>
+                            <div>
+                                <h3>Anverso</h3>
+                                <p>Sube la parte frontal del DNI.</p>
+                            </div>
+                        </div>
+
+                        <label for="file1" class="file-label">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Subir imagen</span>
+                        </label>
+                        <input type="file" id="file1" accept="image/*" hidden>
+
+                        <div class="file-meta" id="file1Name">
+                            <i class="fa-regular fa-file-image"></i>
+                            <span>Ningún archivo seleccionado</span>
+                        </div>
+                    </article>
+
+                    <article class="upload-item">
+                        <div class="upload-item__head">
+                            <div class="upload-item__icon">
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                            <div>
+                                <h3>Reverso</h3>
+                                <p>Sube la parte posterior del DNI.</p>
+                            </div>
+                        </div>
+
+                        <label for="file2" class="file-label">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <span>Subir imagen</span>
+                        </label>
+                        <input type="file" id="file2" accept="image/*" hidden>
+
+                        <div class="file-meta" id="file2Name">
+                            <i class="fa-regular fa-file-image"></i>
+                            <span>Ningún archivo seleccionado</span>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="action-row">
+                    <button id="printBtn" class="action-btn action-btn--primary" type="button">
+                        <i class="fa-solid fa-print"></i>
+                        <span>Imprimir A4</span>
+                    </button>
+
+                    <button id="clearBtn" class="action-btn action-btn--ghost" type="button">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+
+            </aside>
+
+            <!-- PANEL DERECHO -->
+            <section class="preview-panel glass-card">
+                <div class="section-head">
+                    <div>
+                        <span class="section-kicker">
+                            <i class="fa-solid fa-eye"></i>
+                            Vista previa
+                        </span>
+                        <h2>Hoja A4</h2>
+                    </div>
+
+                    <span class="preview-badge">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        Escala lista
+                    </span>
+                </div>
+
+                <div class="preview-stage">
+                    <div class="a4-preview-shell">
+                        <div class="a4-wrapper">
+                            <div class="a4-canvas" id="printArea">
+
+                                <div class="dni-sheet">
+                                    <div class="dni-slot">
+                                        <div class="dni-slot__label"></div>
+                                        <div class="dni-slot__frame">
+                                            <img id="img1" alt="Anverso del DNI" />
+                                            <div class="dni-placeholder" id="placeholder1">
+                                                <i class="fa-regular fa-image"></i>
+                                                <span>Vista previa del anverso</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="dni-slot">
+                                        <div class="dni-slot__label"></div>
+                                        <div class="dni-slot__frame">
+                                            <img id="img2" alt="Reverso del DNI" />
+                                            <div class="dni-placeholder" id="placeholder2">
+                                                <i class="fa-regular fa-image"></i>
+                                                <span>Vista previa del reverso</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+<!-- MODAL ELEGANTE -->
+<div id="customModal" class="custom-modal" aria-hidden="true">
+    <div class="custom-modal__backdrop"></div>
+
+    <div class="custom-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="customModalTitle">
+        <div class="custom-modal__icon">
+            <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+
+        <div class="custom-modal__content">
+            <span class="custom-modal__eyebrow">Atención</span>
+            <h3 id="customModalTitle">Faltan imágenes</h3>
+            <p id="customModalMessage">Sube ambas fotos antes de imprimir.</p>
+        </div>
+
+        <div class="custom-modal__actions">
+            <button id="customModalOk" class="custom-modal__btn custom-modal__btn--primary" type="button">
+                Entendido
+            </button>
+        </div>
+    </div>
+</div>
+    <script src="./app.js"></script>
+</body>
+</html>

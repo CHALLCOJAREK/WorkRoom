@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@1,400&family=Parisienne&display=swap"
+        rel="stylesheet">
+    <title>Carta</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png" />
+
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="./styles.css" />
+
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="loader-icon">💌</div>
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div id="progress-percentage">0%</div>
+    </div>
+
+    <main class="main-content">
+        <h1>Un Mensaje Especial para Ti</h1>
+
+        <div class="contenedor">
+            <div class="envoltura-sobre">
+                <div class="sobre"></div>
+                <div class="solapa solapa-superior"></div>
+                <div class="solapa solapa-derecha"></div>
+                <div class="solapa solapa-izquierda"></div>
+                <div class="corazon"></div>
+                <div class="carta">
+                    <div class="contenido">
+                        <span class="fecha">Pequeñas coincidencias</span>
+                        <p class="saludo">Lucero,</p>
+                        <p class="cuerpo">
+                            A veces uno conoce personas sin esperar demasiado, y sin darse cuenta,
+                            empiezan a ocupar un espacio especial en los días.
+                            No porque hagan algo extraordinario,
+                            sino porque su manera de ser cambia el ritmo de todo.
+                        </p>
+                        <p class="cuerpo">
+                            Contigo las conversaciones fluyen distinto.
+                            Se sienten ligeras, naturales…
+                            como si no hubiera que forzar nada.
+                            Y eso hoy en día vale muchísimo.
+                        </p>
+                        <p class="cuerpo">
+                            Me gusta que podamos hablar de cosas simples,
+                            reírnos de tonterías,
+                            y al mismo tiempo quedarnos pensando después.
+                            Es raro encontrar esa combinación.
+                        </p>
+                        <p class="cuerpo">
+                            No sé en qué momento empezó,
+                            pero me alegra que coincidamos.
+                        </p>
+
+
+                        <div class="bloque-firma">
+                            <img src="https://drive.google.com/thumbnail?id=1SsZk-dSh2jGsS2kGgCqhZIgeD9ZUi_jM"
+                                alt="Foto de recuerdo" class="imagen-recuerdo">
+                            <p class="firma">Te quiero,<br>Jarek</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <audio id="sound"
+        src="https://dl.dropboxusercontent.com/scl/fi/esct592hxwzjyf9a2egpc/Si-supieras-lo-que-siento-con-mirarte....mp3?rlkey=xqbaohnpyd7b3mejkvvdg6dlq&st=2vagx61x&dl=1"
+        type="audio/mpeg" preload="auto"></audio>
+
+    <script src="./app.js" defer></script>
+    <!-- Créditos -->
+    <div style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 14px;
+    backdrop-filter: blur(6px);
+    border-radius: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    z-index: 9999;
+">
+        by <a href="https://github.com/CHALLCOJAREK" target="_blank"
+            style="color: rgba(255, 255, 255, 0.75); text-decoration: none; font-weight: bold;">
+            Jarek
+        </a>
+    </div>
+</body>
+
+</html>

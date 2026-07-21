@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sorteo PRO – J² Tools</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png" />
+
+  <!-- Descripción -->
+  <meta name="description" content="Sistema profesional de sorteos creado por Jarek. Rápido, preciso y sin anuncios." />
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+
+  <!-- ============================= -->
+  <!-- INTRO LOADER -->
+  <!-- ============================= -->
+  <div id="intro">
+    <div class="intro-inner">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <!-- CANVAS BACKGROUND -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ============================= -->
+  <!-- CANVAS FX -->
+  <!-- ============================= -->
+  <canvas id="fx"></canvas>
+
+  <div class="wrap">
+
+    <!-- ============================= -->
+    <!-- HEADER -->
+    <!-- ============================= -->
+    <header class="header">
+
+
+      <!-- ESPACIADOR -->
+      <div style="width:64px"></div>
+    </header>
+
+    <!-- ============================= -->
+    <!-- GRID PRINCIPAL -->
+    <!-- ============================= -->
+    <div class="grid">
+
+      <!-- ========================================== -->
+      <!-- IZQUIERDA – Configuración -->
+      <!-- ========================================== -->
+      <section class="card">
+        <div class="hd">
+          <!-- LOGO (Regresa al home) -->
+          <a href="../index.html" class="logo-return">
+            <img src="https://i.postimg.cc/66Ct5ryw/j2.png" alt="Jarek Logo" class="logo-main">
+          </a>
+          <h3>Participantes</h3>
+          <span class="muted" id="count">0</span>
+        </div>
+
+        <div class="bd">
+          <label for="names">Una persona por línea. También puedes pegar desde Excel.</label>
+
+          <textarea id="names" placeholder="Ejemplo:
+Ana Pérez
+Carlos Vega"></textarea>
+
+          <div class="controls">
+            <button class="btn-secondary" id="loadCsv">
+              <i class="fa-solid fa-file-arrow-up"></i> Importar CSV
+            </button>
+            <input id="csvInput" type="file" accept=".csv,text/csv" style="display:none" />
+
+            <button class="btn-ghost" id="clean">
+              <i class="fa-solid fa-eraser"></i> Limpiar lista
+            </button>
+
+            <button class="btn-ghost" id="dedupe" title="Eliminar duplicados">
+              <i class="fa-solid fa-filter"></i> Quitar duplicados
+            </button>
+          </div>
+
+          <hr class="hr-line" />
+
+          <div class="two-grid">
+            <div>
+              <label for="winners">Cantidad de ganadores</label>
+              <input id="winners" type="number" min="1" value="1" />
+            </div>
+
+            <div>
+              <label for="accent">Color de acento</label>
+              <input id="accent" type="text" value="#22d3ee" />
+            </div>
+          </div>
+
+          <div class="controls" style="margin-top:16px">
+            <label class="check-row">
+              <input type="checkbox" id="noRepeat" checked />
+              Evitar repetir ganadores
+            </label>
+
+            <label class="check-row">
+              <input type="checkbox" id="shuffleOnStart" checked />
+              Mezclar al iniciar
+            </label>
+          </div>
+
+          <div class="controls" style="margin-top:16px">
+            <button class="btn" id="start">
+              <i class="fa-solid fa-play"></i> Iniciar sorteo
+            </button>
+
+            <button class="btn-warn" id="stop" disabled>
+              <i class="fa-solid fa-stop"></i> Detener
+            </button>
+
+            <button class="btn-secondary" id="fullscreen">
+              <i class="fa-solid fa-expand"></i> Pantalla completa
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- DERECHA – Escena del sorteo -->
+      <!-- ========================================== -->
+      <section class="card">
+        <div class="hd">
+          <h3>SorteoPro</h3>
+        </div>
+
+        <div class="bd">
+          <div class="viewer" id="viewer">
+            <div class="ticker">
+              <span class="name" id="ticker">Listo para comenzar</span>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button class="btn-ok" id="confirmWin" disabled>
+              <i class="fa-solid fa-user-check"></i> Confirmar ganador
+            </button>
+
+            <button class="btn-secondary" id="reroll" disabled>
+              <i class="fa-solid fa-arrows-rotate"></i> Volver a sortear
+            </button>
+
+            <button class="btn-danger" id="reset">
+              <i class="fa-solid fa-rotate-left"></i> Reiniciar
+            </button>
+
+            <button class="btn-secondary" id="exportCsv">
+              <i class="fa-solid fa-file-export"></i> Exportar ganadores (CSV)
+            </button>
+          </div>
+
+          <div class="card" style="margin-top:18px">
+            <div class="hd">
+              <h3>Ganadores</h3>
+              <span class="muted" id="winsCount">0</span>
+            </div>
+
+            <div class="bd winners" id="winnersList"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- Créditos -->
+  <div style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  z-index: 9999;">
+    by <a href="https://github.com/CHALLCOJAREK" target="_blank"
+      style="color: rgba(255,255,255,0.85); text-decoration:none; font-weight:600;">
+      Jarek
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script src="./app.js"></script>
+
+</body>
+
+</html>

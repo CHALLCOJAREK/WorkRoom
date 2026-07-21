@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workroom</title>
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png" />
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- TIPOGRAFÍA -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS EXTERNO -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- INTRO / LOADER -->
+  <div id="intro">
+    <div id="intro-text">
+      <span>JAREK</span>
+      <small>IA · RPA · AUTOMATIZACIÓN</small>
+    </div>
+    <div id="intro-loader"></div>
+  </div>
+
+  <!-- FONDO TECH (CANVAS) -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- HEADER FIJO SIN NAV -->
+  <header id="header">
+    <div class="logo-box">
+      <img src="https://i.postimg.cc/66Ct5ryw/j2.png" alt="Logo J²" />
+      <div>
+        <h1>Jarek Angelo Challco Juarez</h1>
+        <h2 class="subtitle">Consultor IA & RPA · Gestión de Proyectos Tecnológicos</h2>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / CARTA PRINCIPAL -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-info fade-up">
+        <p class="hero-tag">Gestión de Proyectos · IA · Automatización · Power Platform</p>
+
+        <h2 class="hero-title">
+          Lidero proyectos tecnológicos que transforman
+          <span>procesos en resultados para el negocio.</span>
+        </h2>
+
+        <p>
+          Gestiono e implemento proyectos de <strong>IA, RPA y Microsoft Power Platform</strong>,
+          desde el levantamiento de requerimientos hasta el despliegue y seguimiento de la solución.
+          Mi enfoque combina visión estratégica, liderazgo y capacidad técnica para optimizar procesos
+          y generar valor real para el negocio.
+        </p>
+
+        <p>
+          He participado en proyectos nacionales e internacionales, coordinando equipos,
+          clientes y soluciones tecnológicas basadas en Power Apps, Power Automate, SharePoint,
+          RPA, bases de datos, servicios cloud e Inteligencia Artificial.
+        </p>
+
+        <div class="hero-meta">
+          <div class="meta-card">
+            <span class="meta-label">Rol principal</span>
+            <span class="meta-value">Consultor IA & RPA</span>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Especialidad</span>
+            <span class="meta-value">Gestión de proyectos de automatización</span>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Foco</span>
+            <span class="meta-value">Resultados, eficiencia y transformación digital</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-holo fade-up">
+        <div class="hero-holo-frame">
+          <img id="holo-img" src="https://i.postimg.cc/tg07MXcD/jarek2.jpg"
+            alt="Retrato de Jarek en estilo holográfico" />
+          <div id="holo-overlay"></div>
+        </div>
+
+        <div class="hero-status">
+          <span class="status-dot"></span>
+          <span class="status-text">Disponible para proyectos y consultorías estratégicas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOQUE SOBRE MÍ / TRAYECTORIA -->
+    <section id="sobre-mi" class="section">
+      <h3 class="section-title fade-up">Una trayectoria orientada a resultados</h3>
+
+      <p class="section-intro fade-up">
+        Mi experiencia combina gestión de proyectos, liderazgo y conocimiento técnico.
+        He evolucionado desde la automatización de tareas hasta la coordinación e implementación
+        de soluciones empresariales orientadas a mejorar procesos, reducir riesgos y generar
+        resultados sostenibles.
+      </p>
+
+      <div class="timeline fade-up">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-year">2021</span>
+          <p>
+            Formación en Ingeniería en Ciberseguridad. Bases sólidas en redes,
+            análisis técnico y automatización de tareas seguras.
+          </p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-year">2022</span>
+          <p>
+            Primeros proyectos de automatización con RPA y Python. Desarrollo de scripts
+            orientados a optimizar procesos operativos y reducir carga manual.
+          </p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-year">2023</span>
+          <p>
+            Implementación de soluciones con OCR e integración de APIs. Inicio de
+            proyectos que combinan automatización con procesamiento inteligente de datos.
+          </p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-year">2024</span>
+          <p>
+            Desarrollo profesional como RPA & IA Developer en entorno empresarial.
+            Implementación de bots con Rocketbot, ETL en Python, integración con
+            Azure Document Intelligence y migración de SQL Server 2008 R2 a 2022.
+          </p>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-year">2025 - Actualidad</span>
+          <p>
+            Liderazgo e implementación de proyectos tecnológicos con Power Apps, Power Automate,
+            SharePoint, RPA e Inteligencia Artificial. Coordinación de requerimientos, equipos,
+            automatizaciones y despliegues con enfoque en eficiencia operativa y valor para el negocio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS / CÓMO AYUDO -->
+    <section id="servicios" class="section">
+      <h3 class="section-title fade-up">Cómo puedo ayudar a tu empresa</h3>
+
+      <p class="section-intro fade-up">
+        Pienso en cada proyecto como en una arquitectura: estrategia, capas claras, responsabilidades definidas y
+        un resultado medible. Estas son algunas de las formas en las que aporto valor:
+      </p>
+
+      <div class="services-grid fade-up">
+        <div class="service-card">
+          <i class="fa-solid fa-robot"></i>
+          <h4>Automatización Inteligente</h4>
+          <p>
+            Diseño y despliego flujos con <strong>Selenium, Rocketbot y n8n</strong> para que
+            procesos manuales, repetitivos y sensibles al error se vuelvan confiables, rápidos y
+            auditables.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="fa-solid fa-brain"></i>
+          <h4>IA aplicada a negocio</h4>
+          <p>
+            Implemento asistentes con <strong>LLMs, OCR y búsqueda semántica</strong> que responden sobre tu propia
+            información: normativa, documentos internos, reportes, correos y más.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="fa-solid fa-diagram-project"></i>
+          <h4>Arquitectura & Integraciones</h4>
+          <p>
+            Construyo <strong>APIs con FastAPI</strong>, integraciones por Webhooks y pipelines
+            que conectan Excel, OneDrive, bases de datos y servicios en la nube en un flujo lógico
+            y mantenible.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <i class="fa-solid fa-laptop-code"></i>
+          <h4>Herramientas y paneles a medida</h4>
+          <p>
+            Desarrollo herramientas internas, dashboards ligeros y paneles de control para que
+            tu equipo tenga una interfaz clara sobre la automatización que ocurre detrás.
+          </p>
+        </div>
+        <div class="service-card">
+          <i class="fa-brands fa-microsoft"></i>
+          <h4>Power Platform & Gestión de Procesos</h4>
+          <p>
+            Lidero el diseño e implementación de soluciones empresariales con
+            <strong>Power Apps, Power Automate y SharePoint</strong>, desde el levantamiento
+            de requerimientos hasta el despliegue, seguimiento y mejora continua.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK / TECNOLOGÍAS -->
+    <section id="tecnologias" class="section">
+      <h3 class="section-title fade-up">Stack y tecnologías que utilizo</h3>
+
+      <p class="section-intro fade-up">
+        No se trata de usar todo, sino de elegir lo correcto para cada caso. Este es el stack con
+        el que construyo soluciones end-to-end:
+      </p>
+
+      <div class="tech-grid fade-up">
+        <span class="tech-item">
+          <i class="fa-solid fa-list-check"></i> Gestión de Proyectos
+        </span>
+        <span class="tech-item">
+          <i class="fa-brands fa-python"></i> Python
+        </span>
+        <span class="tech-item">
+          <i class="fa-solid fa-brain"></i> IA & LLMs (GPT, Gemini)
+        </span>
+        <span class="tech-item">
+          <i class="fa-solid fa-globe"></i> FastAPI & APIs REST
+        </span>
+        <span class="tech-item">
+          <i class="fa-brands fa-js"></i> JavaScript
+        </span>
+        <span class="tech-item">
+          <i class="fa-brands fa-node"></i> Node.js & n8n
+        </span>
+        <span class="tech-item">
+          <i class="fa-solid fa-robot"></i> RPA / UI Bots
+        </span>
+        <span class="tech-item">
+          <i class="fa-brands fa-html5"></i> HTML & CSS
+        </span>
+        <span class="tech-item">
+          <i class="fa-solid fa-database"></i> MySQL & SQL
+        </span>
+        <span class="tech-item">
+          <i class="fa-solid fa-cloud"></i> Netlify & despliegue estático
+        </span>
+        <span class="tech-item">
+          <i class="fa-brands fa-microsoft"></i> Power Apps
+        </span>
+
+        <span class="tech-item">
+          <i class="fa-solid fa-gears"></i> Power Automate
+        </span>
+
+        <span class="tech-item">
+          <i class="fa-solid fa-share-nodes"></i> SharePoint Online
+        </span>
+      </div>
+    </section>
+
+    <!-- HERRAMIENTAS / MINI APPS -->
+    <section id="apps" class="section">
+      <h3 class="section-title fade-up">Herramientas que he construido</h3>
+
+      <p class="section-intro fade-up">
+        Además de proyectos corporativos, desarrollo utilidades que resuelven problemas
+        concretos del día a día. Algunas de ellas:
+      </p>
+
+      <div class="apps-grid fade-up">
+        <a href="./WspGenLink/wspgeneratorlink.html" class="app-card">
+          <i class="fa-brands fa-whatsapp"></i>
+          <h4>WhatsApp Link Generator</h4>
+          <p>Genera enlaces limpios y personalizados para campañas y atención al cliente.</p>
+        </a>
+
+        <a href="./QRGen/QRGnernator.html" class="app-card">
+          <i class="fa-solid fa-qrcode"></i>
+          <h4>QR Maker Pro</h4>
+          <p>Códigos QR listos para tu negocio, materiales físicos o eventos.</p>
+        </a>
+
+        <a href="./Sorteo/sorteo.html" class="app-card">
+          <i class="fa-solid fa-gift"></i>
+          <h4>Random Sorteos</h4>
+          <p>Sorteos transparentes para dinámicas internas, premios o campañas.</p>
+        </a>
+
+        <a href="./DNIs/dnis.html" class="app-card">
+          <i class="fa-solid fa-id-card"></i>
+          <h4>Fotos DNI A4</h4>
+          <p>Generador profesional para imprimir fotos con medidas exactas en hoja A4.</p>
+        </a>
+        <!--
+        <a href="./ForYou/index.html" class="app-card">
+          <i class="fa-solid fa-heart"></i>
+          <h4>Romántico</h4>
+          <p>Proyectos personales donde mezclo código, creatividad y detalles humanos.</p>
+        </a>
+        -->
+      </div>
+    </section>
+
+    <!-- PROYECTOS DESTACADOS -->
+    <section id="proyectos" class="section">
+      <h3 class="section-title fade-up">Proyectos destacados</h3>
+
+      <p class="section-intro fade-up">
+        Cada uno de estos proyectos refleja un enfoque: automatizar, ordenar y hacer visible lo
+        que antes era manual, disperso o frágil.
+      </p>
+
+      <div class="projects-list fade-up">
+        <div class="project-card">
+          <h4>AntiCaptcha API privada</h4>
+          <p>
+            Sistema OCR híbrido con Tesseract, EasyOCR, TrOCR y fallback en modelos de IA.
+            Expuesto como API privada con autenticación y pensado para integrarse con bots y
+            automatizaciones.
+          </p>
+          <ul>
+            <li>Pipeline híbrido IA + OCR tradicional</li>
+            <li>Control de uso y logs de ejecución</li>
+            <li>Diseñado para consumir desde RPA y microservicios</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>Sistema de Inspecciones 5S con Power Platform</h4>
+          <p>
+            Liderazgo del desarrollo e implementación de una solución empresarial para gestionar
+            inspecciones, evidencias, responsables, correcciones y aprobaciones mediante Microsoft
+            Power Platform.
+          </p>
+          <ul>
+            <li>Levantamiento y análisis de requerimientos del negocio</li>
+            <li>Aplicación desarrollada con Power Apps y SharePoint Online</li>
+            <li>Automatización de notificaciones y flujos con Power Automate</li>
+            <li>Coordinación de pruebas, despliegue, capacitación y seguimiento</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>Chatbot tributario con IA</h4>
+          <p>
+            Asistente entrenado con normativa tributaria y fuentes oficiales. Permite consultas
+            naturales y se integra con automatizaciones que obtienen datos de entidades externas.
+          </p>
+          <ul>
+            <li>Buscador semántico + modelo de lenguaje</li>
+            <li>Capas para actualizar información de forma segura</li>
+            <li>Respuestas trazables y auditables</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>ETL de Excel en la nube</h4>
+          <p>
+            Proceso automático que toma archivos de OneDrive, los normaliza, migra a una base de
+            datos y alimenta dashboards de BI sin intervención manual.
+          </p>
+          <ul>
+            <li>Carga incremental y control de duplicados</li>
+            <li>Validación de datos y manejo de errores</li>
+            <li>Actualizaciones programadas para reporting</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>Automatización multiplataforma</h4>
+          <p>
+            Robots UI para plataformas sin API oficial, operando con precisión y estabilidad
+            flujos sensibles a error humano.
+          </p>
+          <ul>
+            <li>Manejo de múltiples sesiones y estados</li>
+            <li>Reportes de ejecución para el equipo</li>
+            <li>Diseñados para correr en segundo plano</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>OCR inteligente y procesamiento de documentos</h4>
+          <p>
+            Sistema avanzado de reconocimiento de texto con múltiples motores y validación
+            automática para documentos complejos y de baja calidad.
+          </p>
+          <ul>
+            <li>Uso combinado de modelos IA & Python</li>
+            <li>Normalización, limpieza y extracción estructurada</li>
+            <li>API privada para consumo interno y automatizaciones</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>Migración automatizada de datos</h4>
+          <p>
+            Proceso de migracion de base de datos SQL 2008 R2 a SQL 2022, dejando la información
+            organizada, incremental y lista para análisis.
+          </p>
+          <ul>
+            <li>Normalizacion de datos</li>
+            <li>Carga incremental</li>
+            <li>control de versiones de los datos</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <h4>Automatización de flujos con n8n</h4>
+          <p>
+            Orquestación inteligente de procesos repetitivos críticos, conectando sistemas,
+            enviando alertas y ejecutando tareas de forma totalmente autónoma.
+          </p>
+          <ul>
+            <li>Integración de fuentes internas y externas</li>
+            <li>Alertas automáticas basadas en cambios y eventos</li>
+            <li>Reducción del tiempo operativo y errores manuales</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CERTIFICACIONES / CARRUSEL -->
+    <section id="certificaciones" class="section">
+      <h3 class="section-title fade-up">Certificaciones</h3>
+
+      <p class="section-intro fade-up">
+        Certificaciones que respaldan mis competencias en gestión de proyectos,
+        automatización, Inteligencia Artificial, RPA, ciberseguridad y transformación digital.
+      </p>
+
+      <div class="cert-wrapper fade-up">
+        <button class="cert-btn cert-left" aria-label="Anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="cert-carousel" id="cert-carousel">
+          <!-- JS inyecta tarjetas -->
+          <div class="cert-skeleton"></div>
+          <div class="cert-skeleton"></div>
+          <div class="cert-skeleton"></div>
+        </div>
+
+        <button class="cert-btn cert-right" aria-label="Siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- MODAL / LIGHTBOX -->
+    <div class="cert-modal" id="cert-modal" aria-hidden="true">
+      <div class="cert-modal-backdrop" data-close="1"></div>
+      <div class="cert-modal-content" role="dialog" aria-modal="true">
+        <button class="cert-modal-close" id="cert-modal-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <img id="cert-modal-img" alt="Certificado ampliado" />
+        <div class="cert-modal-meta">
+          <h4 id="cert-modal-title"></h4>
+          <p id="cert-modal-desc"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CV PROFESIONAL -->
+    <section id="cv-section" class="section">
+      <h3 class="section-title fade-up">Currículum Profesional</h3>
+
+      <p class="section-intro fade-up">
+        Perfil profesional con experiencia en gestión de proyectos tecnológicos, liderazgo,
+        automatización, Inteligencia Artificial y Microsoft Power Platform.
+      </p>
+
+      <div class="cv-wrap fade-up">
+        <!-- CARD PREVIEW (IMAGEN) -->
+        <div class="cv-card2" id="cv-open" role="button" tabindex="0" aria-label="Abrir CV">
+          <img class="cv-thumb" src="./docs/cv-thumb.jpg" alt="Vista previa CV" />
+
+          <div class="cv-glass">
+            <div class="cv-left">
+              <i class="fa-solid fa-file-pdf"></i>
+              <div>
+                <strong>Curriculum Vitae</strong>
+                <span>clic para ver</span>
+              </div>
+            </div>
+
+            <div class="cv-right">
+              
+              <a class="cv-chip cv-chip-primary" href="./docs/Jarek_CV_2025.pdf" download>
+                <i class="fa-solid fa-file-arrow-down"></i> Descargar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL PDF -->
+    <div class="cv-modal" id="cv-modal" aria-hidden="true">
+      <div class="cv-modal-backdrop" data-close="1"></div>
+      <div class="cv-modal-content" role="dialog" aria-modal="true">
+        <button class="cv-modal-close" id="cv-modal-close" aria-label="Cerrar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <iframe id="cv-frame" src="" title="CV PDF" frameborder="0">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- PROYECTOS GITHUB / CARRUSEL PREMIUM -->
+    <section id="github" class="section">
+      <h3 class="section-title fade-up">Proyectos de mi GitHub</h3>
+
+      <p class="section-intro fade-up">
+        Repositorios recientes, ordenados por relevancia, tecnología y actividad real.
+      </p>
+
+      <div class="github-wrapper fade-up">
+
+        <!-- FLECHA IZQUIERDA -->
+        <button class="gh-btn gh-left">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- CARRUSEL -->
+        <div class="github-carousel" id="github-carousel">
+          <!-- Skeletons de carga -->
+          <div class="github-skeleton"></div>
+          <div class="github-skeleton"></div>
+          <div class="github-skeleton"></div>
+        </div>
+
+        <!-- FLECHA DERECHA -->
+        <button class="gh-btn gh-right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+      </div>
+    </section>
+
+
+    <!-- CTA FINAL -->
+    <section id="cta" class="section">
+      <h2 class="fade-up">Convirtamos tus procesos en proyectos que generen resultados.</h2>
+      <p class="fade-up">
+        Si buscas implementar una solución de automatización, Inteligencia Artificial o Power Platform,
+        puedo ayudarte a gestionar el proyecto desde el análisis inicial hasta su despliegue.
+        Con planificación clara, comunicación constante y resultados medibles.
+      </p>
+
+      <div class="cta-actions fade-up">
+        <a href="https://wa.me/51972781723?text=Hola%20Jarek,%20quiero%20consultar%20sobre%20IA%20y%20automatización"
+          class="cta-btn">
+          Escríbeme por WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-links">
+      <a href="https://github.com/CHALLCOJAREK" target="_blank" class="footer-icon">
+        <i class="fa-brands fa-github"></i>
+      </a>
+
+      <a href="https://www.linkedin.com/in/jarek-angelo-challco-juarez-70a029249/" target="_blank" class="footer-icon">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+
+      <a href="https://www.facebook.com/jarek.challco.22" target="_blank" class="footer-icon">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+
+      <a href="https://www.instagram.com/jarek_challco21/" target="_blank" class="footer-icon">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+
+    <p>© 2025 Jarek — IA, RPA & Arquitectura de Automatización</p>
+    <p class="footer-small">
+      Portafolio construido como una carta viva de lo que hago: automatizar, integrar y escalar
+      sistemas inteligentes orientados a negocio.
+    </p>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script src="app.js" defer></script>
+
+</body>
+
+</html>
