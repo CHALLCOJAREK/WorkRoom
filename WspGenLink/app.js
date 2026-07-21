@@ -1,17 +1,43 @@
 /* ============================================================
-   00) INTRO ANIMADO — Fade + Delay Premium
+   INTRO LOADER
 ============================================================ */
-window.addEventListener("load", () => {
-  const intro = document.getElementById("intro");
 
-  setTimeout(() => {
-    intro.classList.add("hidden");
+const introLoader = document.getElementById("introLoader");
+
+const introState = {
+    hidden: false
+};
+
+function hideIntroLoader() {
+
+    if (!introLoader || introState.hidden) return;
+
+    introState.hidden = true;
+
+    introLoader.classList.add("is-hidden");
+
+    document.body.style.removeProperty("overflow");
 
     setTimeout(() => {
-      intro.style.display = "none";
-      document.body.classList.add("app-loaded");
-    }, 600);
-  }, 900);
+
+        if (introLoader.parentNode) {
+            introLoader.remove();
+        }
+
+    }, 550);
+
+}
+
+window.addEventListener("load", () => {
+
+    document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+
+        setTimeout(hideIntroLoader, 1200);
+
+    });
+
 });
 
 

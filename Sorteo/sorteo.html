@@ -7,7 +7,7 @@
   <title>Sorteo PRO – J² Tools</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/66Ct5ryw/j2.png" />
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/fyML87S7/logo3.png" />
 
   <!-- Descripción -->
   <meta name="description" content="Sistema profesional de sorteos creado por Jarek. Rápido, preciso y sin anuncios." />
@@ -21,14 +21,16 @@
 
 <body>
 
-  <!-- ============================= -->
-  <!-- INTRO LOADER -->
-  <!-- ============================= -->
-  <div id="intro">
-    <div class="intro-inner">
-      <div class="loader"></div>
+
+  <!-- INTRO -->
+    <div id="introLoader" class="intro-loader" aria-hidden="true">
+        <div class="intro-loader__core">
+            <div class="intro-loader__ring"></div>
+            <div class="intro-loader__ring intro-loader__ring--delay"></div>
+            <div class="intro-loader__glow"></div>
+            <p class="intro-loader__text">J² Tools</p>
+        </div>
     </div>
-  </div>
 
   <!-- CANVAS BACKGROUND -->
   <canvas id="bg-canvas"></canvas>
@@ -61,8 +63,8 @@
       <section class="card">
         <div class="hd">
           <!-- LOGO (Regresa al home) -->
-          <a href="../index.html" class="logo-return">
-            <img src="https://i.postimg.cc/66Ct5ryw/j2.png" alt="Jarek Logo" class="logo-main">
+          <a href="../index.html" class="logo-return" aria-label="Volver al inicio">
+              <i class="fa-solid fa-trophy logo-icon"></i>
           </a>
           <h3>Participantes</h3>
           <span class="muted" id="count">0</span>

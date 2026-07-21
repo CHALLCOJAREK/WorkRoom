@@ -82,68 +82,202 @@ body {
 }
 
 /* ============================================================
-   03) INTRO LOADER — Purple NeoGlass PRO
-=========================================================== */
-#intro {
-  position: fixed;
-  inset: 0;
-  background: #0a0d1a; /* morado-azulado limpio, más elegante */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
+   INTRO LOADER · J² NeoGlass
+============================================================ */
 
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .65s ease, visibility .65s ease;
+.intro-loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(56,189,248,.10) 0%,
+            transparent 40%),
+        linear-gradient(
+            135deg,
+            var(--bg) 0%,
+            var(--panel) 55%,
+            var(--bg) 100%
+        );
+
+    backdrop-filter:var(--blur-strong);
+    -webkit-backdrop-filter:var(--blur-strong);
+
+    transition:
+        opacity .55s ease,
+        visibility .55s ease;
 }
 
-/* Fade out perfecto */
-#intro.hidden {
-  opacity: 0;
-  visibility: hidden;
+.intro-loader.is-hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
 
-/* Loader circular cristal-violeta */
-.loader {
-  width: 72px;
-  height: 72px;
+/* ========================================= */
 
-  border-radius: 50%;
-  border: 5px solid rgba(167,139,250,0.22); /* violeta suave */
-  border-top-color: #c084fc;                /* violeta brillante */
+.intro-loader__core{
+    position:relative;
+    width:150px;
+    height:150px;
 
-  backdrop-filter: blur(10px) saturate(1.4);
-
-  /* Glow Violeta Tech */
-  box-shadow:
-    0 0 18px rgba(192,132,252,0.48),
-    inset 0 0 12px rgba(255,255,255,0.08);
-
-  animation:
-    spin 1s linear infinite,
-    loaderGlow 2.2s ease-in-out infinite;
+    display:grid;
+    place-items:center;
 }
 
-/* Rotación */
-@keyframes spin {
-  to { transform: rotate(360deg); }
+/* ========================================= */
+
+.intro-loader__ring,
+.intro-loader__ring--delay{
+    position:absolute;
+    border-radius:50%;
+    border:2px solid transparent;
 }
 
-/* Glow vivo que respira */
-@keyframes loaderGlow {
-  0%, 100% {
+.intro-loader__ring{
+    inset:0;
+
+    border-top-color:var(--brand);
+    border-right-color:var(--glass-3);
+
     box-shadow:
-      0 0 18px rgba(192,132,252,0.48),
-      inset 0 0 10px rgba(255,255,255,0.06);
-  }
-  50% {
-    box-shadow:
-      0 0 32px rgba(192,132,252,0.78),
-      inset 0 0 16px rgba(255,255,255,0.14);
-  }
+        0 0 25px var(--glow);
+
+    animation:introSpin 1.15s linear infinite;
 }
 
+.intro-loader__ring--delay{
+    inset:14px;
+
+    border-top-color:var(--brand-2);
+    border-left-color:var(--border-light);
+
+    animation:introSpinReverse 1.9s linear infinite;
+}
+
+/* ========================================= */
+
+.intro-loader__glow{
+    position:absolute;
+    inset:38px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+            var(--brand) 0%,
+            rgba(56,189,248,.18) 55%,
+            transparent 100%);
+
+    filter:blur(3px);
+
+    box-shadow:
+        0 0 18px var(--glow),
+        0 0 50px var(--glow-strong);
+
+    animation:introPulse 2.3s ease-in-out infinite;
+}
+
+/* ========================================= */
+
+.intro-loader__logo{
+    position:relative;
+    z-index:5;
+
+    width:72px;
+    height:72px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--glass-2);
+    border:1px solid var(--border);
+
+    backdrop-filter:var(--blur-soft);
+
+    box-shadow:var(--shadow);
+}
+
+.intro-loader__logo span{
+
+    color:var(--text);
+
+    font-size:1.8rem;
+    font-weight:800;
+
+    letter-spacing:.04em;
+
+    text-shadow:
+        0 0 18px var(--glow-strong);
+}
+
+/* ========================================= */
+
+.intro-loader__text{
+
+    position:absolute;
+    bottom:-34px;
+
+    margin:0;
+
+    color:var(--muted);
+
+    font-size:.82rem;
+    font-weight:700;
+
+    letter-spacing:.35em;
+    text-transform:uppercase;
+}
+
+/* ========================================= */
+
+@keyframes introSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes introSpinReverse{
+
+    from{
+        transform:rotate(360deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+
+}
+
+@keyframes introPulse{
+
+    0%,100%{
+        transform:scale(.94);
+        opacity:.75;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:1;
+    }
+
+}
 /* ============================================================
    04) CANVAS FX — NeoGlass Purple Grid/Glow PRO
 =========================================================== */
@@ -249,87 +383,152 @@ body > *:last-child {
 
 
 /* ============================================================
-   06) HEADER (Logo + Título) — Holographic Neon Purple PRO
-=========================================================== */
-.header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 26px;
-  margin-bottom: 36px;
+   06) HEADER — NeoGlass Premium
+============================================================ */
+
+.header{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    gap:26px;
+    margin-bottom:38px;
 }
 
-/* Botón Home */
-.logo-return {
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  cursor: pointer;
+/* ============================================================
+   BOTÓN VOLVER
+============================================================ */
+
+.logo-return{
+
+    width:54px;
+    height:54px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:var(--glass-2);
+    border:1px solid var(--glass-3);
+
+    backdrop-filter:var(--blur-mid);
+
+    box-shadow:var(--shadow);
+
+    transition:all .30s cubic-bezier(.4,0,.2,1);
+
 }
 
-/* LOGO NEÓN HOLOGRÁFICO — versión PRO */
-.logo-main {
-  width: 24px;
-  height: 24px;
+.logo-return:hover{
 
-  background: transparent !important;
-  border: none;
-  object-fit: contain;
+    transform:translateY(-4px) scale(1.08);
 
-  /* Halo más limpio y estético */
-  filter:
-    drop-shadow(0 0 14px rgba(180, 94, 255, 0.60))
-    drop-shadow(0 0 26px rgba(140, 70, 255, 0.42));
+    border-color:var(--brand);
 
-  transition: transform .28s ease, filter .28s ease;
+    box-shadow:
+        var(--shadow),
+        0 0 24px rgba(167,139,250,.25);
+
 }
 
-/* HOVER — efecto pulido */
-.logo-main:hover {
-  transform: translateY(-3px) scale(1.08);
+/* ============================================================
+   ICONO
+============================================================ */
 
-  filter:
-    drop-shadow(0 0 20px rgba(200,110,255,0.85))
-    drop-shadow(0 0 36px rgba(160,75,255,0.60));
+.logo-icon{
+
+    font-size:1.45rem;
+
+    color:var(--brand);
+
+    transition:all .30s ease;
+
+    filter:
+        drop-shadow(0 0 10px rgba(167,139,250,.35));
+
+    animation:logoPulse 3.5s ease-in-out infinite;
+
 }
 
-/* Pulso holográfico suave */
-@keyframes logoPulse {
-  0%   { filter: drop-shadow(0 0 12px rgba(180, 94, 255, 0.55)); }
-  50%  { filter: drop-shadow(0 0 20px rgba(210,125,255,0.75)); }
-  100% { filter: drop-shadow(0 0 12px rgba(180, 94, 255, 0.55)); }
+.logo-return:hover .logo-icon{
+
+    color:var(--brand-2);
+
+    transform:
+        rotate(-12deg)
+        scale(1.18);
+
+    filter:
+        drop-shadow(0 0 18px rgba(192,132,252,.65));
+
 }
 
-.logo-main {
-  animation: logoPulse 3.8s ease-in-out infinite;
+@keyframes logoPulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+        filter:
+            drop-shadow(0 0 10px rgba(167,139,250,.35));
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+        filter:
+            drop-shadow(0 0 20px rgba(192,132,252,.65));
+
+    }
+
 }
 
-/* -------- TITULO -------- */
-.title {
-  text-align: center;
+/* ============================================================
+   TÍTULO
+============================================================ */
+
+.title{
+    text-align:center;
 }
 
-/* Título principal */
-.title h1 {
-  font-size: clamp(28px, 5vw, 46px);
-  font-weight: 700;
+.title h1{
 
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    font-size:clamp(30px,5vw,48px);
+    font-weight:800;
 
-  letter-spacing: .3px;
-  filter: drop-shadow(0 3px 14px rgba(0,0,0,.45));
+    letter-spacing:.4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--brand),
+            var(--brand-2)
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    filter:
+        drop-shadow(0 4px 18px rgba(0,0,0,.45));
+
 }
 
-/* Subtítulo fino */
-.subtitle {
-  display: block;
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 14px;
+.subtitle{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    letter-spacing:.12em;
+
 }
 /* ============================================================
    07) GRID PRINCIPAL — NeoGlass Layout PRO v2

@@ -87,46 +87,203 @@ body {
 
 
 /* ============================================================
-   04) INTRO / LOADER
-=========================================================== */
-#intro {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
+   INTRO LOADER · J² NeoGlass
+============================================================ */
 
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(20px);
+.intro-loader{
+    position:fixed;
+    inset:0;
+    z-index:99999;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(56,189,248,.10) 0%,
+            transparent 45%),
+        linear-gradient(
+            135deg,
+            #05070b,
+            #0a1018 45%,
+            #05070b
+        );
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:
+        opacity .55s ease,
+        visibility .55s ease;
 }
 
-#intro.hidden {
-  opacity: 0;
-  visibility: hidden;
+.intro-loader.is-hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
 }
 
-.loader {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 4px solid rgba(255,255,255,0.2);
-  border-top-color: var(--accent);
-  animation: spin 0.9s linear infinite;
+/* ---------- */
+
+.intro-loader__core{
+    position:relative;
+    width:150px;
+    height:150px;
+
+    display:grid;
+    place-items:center;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+/* ---------- */
 
-.intro-text {
-  margin-top: 14px;
-  color: var(--text-soft);
-  text-align: center;
-  font-size: 0.9rem;
+.intro-loader__ring{
+    position:absolute;
+    inset:0;
+
+    border-radius:50%;
+    border:2px solid transparent;
+
+    border-top-color:var(--accent);
+    border-right-color:var(--glass-strong);
+
+    box-shadow:
+        0 0 22px rgba(56,189,248,.18);
+
+    animation:introSpin 1.15s linear infinite;
 }
 
+.intro-loader__ring--delay{
+    inset:14px;
+
+    border-top-color:var(--accent-strong);
+    border-left-color:var(--border);
+
+    animation:introSpinReverse 1.9s linear infinite;
+}
+
+/* ---------- */
+
+.intro-loader__glow{
+    position:absolute;
+    inset:38px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(56,189,248,.90) 0%,
+            rgba(56,189,248,.18) 55%,
+            transparent 100%);
+
+    filter:blur(2px);
+
+    animation:introPulse 2.2s ease-in-out infinite;
+
+    box-shadow:
+        0 0 18px rgba(56,189,248,.35),
+        0 0 42px rgba(56,189,248,.18);
+}
+
+/* ---------- */
+
+.intro-loader__logo{
+    position:relative;
+    z-index:2;
+
+    width:72px;
+    height:72px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--glass);
+    border:1px solid var(--border);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        var(--shadow-sm),
+        inset 0 0 18px rgba(255,255,255,.05);
+}
+
+.intro-loader__logo span{
+    font-size:1.8rem;
+    font-weight:800;
+
+    color:var(--text-main);
+
+    letter-spacing:.05em;
+
+    text-shadow:
+        0 0 12px rgba(56,189,248,.55);
+}
+
+/* ---------- */
+
+.intro-loader__text{
+    position:absolute;
+    bottom:-34px;
+
+    margin:0;
+
+    color:var(--text-soft);
+
+    font-size:.82rem;
+    font-weight:700;
+
+    letter-spacing:.35em;
+    text-transform:uppercase;
+
+    user-select:none;
+}
+
+/* ============================================================
+   Animations
+============================================================ */
+
+@keyframes introSpin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+@keyframes introSpinReverse{
+
+    from{
+        transform:rotate(360deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+
+}
+
+@keyframes introPulse{
+
+    0%,100%{
+        transform:scale(.95);
+        opacity:.8;
+    }
+
+    50%{
+        transform:scale(1.12);
+        opacity:1;
+    }
+
+}
 
 /* ============================================================
    06) CONTENEDOR PRINCIPAL .app

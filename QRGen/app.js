@@ -3,20 +3,40 @@
    Animaciones + Canvas + Parallax + Scroll Reveal + QR Engine
 ============================================================ */
 
-/* ============================================================
-   INTRO ANIMADA
-============================================================ */
-window.addEventListener("load", () => {
-  const intro = document.getElementById("intro");
+/* =========================================
+   INTRO LOADER
+========================================= */
 
-  setTimeout(() => {
-    intro.classList.add("hidden");
+const introLoader = document.getElementById("introLoader");
+
+const state = {
+    introHidden: false
+};
+
+function hideIntroLoader() {
+
+    if (!introLoader || state.introHidden) return;
+
+    state.introHidden = true;
+
+    document.body.style.overflow = "";
+
+    introLoader.classList.add("is-hidden");
 
     setTimeout(() => {
-      intro.style.display = "none";
-      document.body.classList.add("app-ready");
-    }, 800);
-  }, 900);
+        introLoader.remove();
+    }, 550);
+
+}
+
+window.addEventListener("load", () => {
+
+    document.body.style.overflow = "hidden";
+
+    setTimeout(() => {
+        requestAnimationFrame(hideIntroLoader);
+    }, 1200);
+
 });
 
 /* ============================================================

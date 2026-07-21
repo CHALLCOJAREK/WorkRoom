@@ -1,15 +1,3 @@
-/* ============================================================
-   SORTEO PRO — JS FÉNIX PRIME (FIXED + MEJORADO)
-   ✔ Todos los botones del HTML funcionan
-   ✔ Confirmar ganador agrega a la lista
-   ✔ Re-roll funciona (reanima y vuelve a parar)
-   ✔ Evita “ganador fantasma” cuando no hay elegibles
-   ✔ Respeta cantidad de ganadores
-   ✔ Import CSV robusto (coma / punto y coma / tabs)
-   ✔ Acento aplica al viewer (CSS var --accent)
-   ✔ Fullscreen estable
-=========================================================== */
-
 /* --------------------------
    UTILIDADES
 --------------------------- */
@@ -524,11 +512,44 @@ function escapeHtml(s) {
 
 /* ============================================================
    INTRO LOADER
-=========================================================== */
+============================================================ */
+
+const introLoader = document.getElementById("introLoader");
+
+const introState = {
+    hidden: false
+};
+
+function hideIntroLoader() {
+
+    if (!introLoader || introState.hidden) return;
+
+    introState.hidden = true;
+
+    introLoader.classList.add("is-hidden");
+
+    document.body.style.removeProperty("overflow");
+
+    setTimeout(() => {
+
+        if (introLoader.parentNode) {
+            introLoader.remove();
+        }
+
+    }, 550);
+
+}
+
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    $("#intro")?.classList.add("hidden");
-  }, 700);
+
+    document.body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+
+        setTimeout(hideIntroLoader, 1200);
+
+    });
+
 });
 
 /* ============================================================
