@@ -1408,7 +1408,7 @@ if (siteHeader) {
     );
 
   const CV_URL =
-    "./docs/Jarek_CV_2025.pdf";
+    "./docs/Jarek_CV_2026.pdf";
 
   function openCV() {
     if (!cvModal || !cvFrame) {
