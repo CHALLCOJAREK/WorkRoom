@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       introLoader.style.transform = "scaleX(0)";
       introLoader.style.transformOrigin = "left";
       introLoader.style.transition = "transform 2.2s ease-out";
+
       requestAnimationFrame(() => {
         introLoader.style.transform = "scaleX(1)";
       });
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Ligero fade del texto antes de desaparecer
     if (introText) {
       introText.style.transition = "opacity 0.6s ease";
+
       setTimeout(() => {
         introText.style.opacity = "0.78";
       }, 1600);
@@ -35,16 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
       intro.style.pointerEvents = "none";
       intro.style.display = "none";
       document.body.classList.add("app-ready");
-    }, 3200); // ligeramente más que tu animación CSS
+    }, 3200);
   }
 
   // ---------------------------------------------------
   // 2) CANVAS DINÁMICO TECH DE FONDO (#bg-canvas)
   // ---------------------------------------------------
   const canvas = document.getElementById("bg-canvas");
+
   if (canvas && canvas.getContext) {
     const ctx = canvas.getContext("2d");
-    let width, height, particles;
+
+    let width;
+    let height;
+    let particles;
 
     const PARTICLE_COUNT = 80;
     const MAX_DISTANCE = 160;
@@ -56,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function createParticles() {
       particles = [];
+
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         particles.push({
           x: Math.random() * width,
@@ -69,41 +76,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateParticles() {
-      for (const p of particles) {
-        p.x += p.vx;
-        p.y += p.vy;
+      for (const particle of particles) {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
+        if (particle.x < 0 || particle.x > width) {
+          particle.vx *= -1;
+        }
+
+        if (particle.y < 0 || particle.y > height) {
+          particle.vy *= -1;
+        }
       }
     }
 
     function drawParticles() {
       ctx.clearRect(0, 0, width, height);
 
-      // puntos
-      for (const p of particles) {
+      // Puntos
+      for (const particle of particles) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 230, 255, ${p.alpha})`;
+
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.r,
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          `rgba(0, 230, 255, ${particle.alpha})`;
+
         ctx.fill();
       }
 
-      // líneas entre puntos cercanos
+      // Líneas entre puntos cercanos
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
-          const p1 = particles[i];
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const firstParticle = particles[i];
+          const secondParticle = particles[j];
 
-          if (dist < MAX_DISTANCE) {
-            const alpha = 1 - dist / MAX_DISTANCE;
+          const deltaX =
+            firstParticle.x - secondParticle.x;
+
+          const deltaY =
+            firstParticle.y - secondParticle.y;
+
+          const distance = Math.sqrt(
+            deltaX * deltaX + deltaY * deltaY
+          );
+
+          if (distance < MAX_DISTANCE) {
+            const opacity =
+              1 - distance / MAX_DISTANCE;
+
             ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(0, 190, 255, ${0.14 * alpha})`;
+
+            ctx.moveTo(
+              firstParticle.x,
+              firstParticle.y
+            );
+
+            ctx.lineTo(
+              secondParticle.x,
+              secondParticle.y
+            );
+
+            ctx.strokeStyle =
+              `rgba(0, 190, 255, ${0.14 * opacity})`;
+
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -111,16 +153,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    function animate() {
+    function animateCanvas() {
       updateParticles();
       drawParticles();
-      requestAnimationFrame(animate);
+
+      requestAnimationFrame(animateCanvas);
     }
 
-    // init
     resizeCanvas();
     createParticles();
-    animate();
+    animateCanvas();
 
     window.addEventListener("resize", () => {
       resizeCanvas();
@@ -129,57 +171,91 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------
-  // 3) SCROLLREVEAL PRO (fade, slide, holo)
+  // 3) SCROLL REVEAL PRO
   // ---------------------------------------------------
   const revealConfig = [
-    { selector: ".section", effect: "fade-up" },
-    { selector: ".service-card", effect: "fade-up" },
-    { selector: ".app-card", effect: "fade-up" },
-    { selector: ".project-card", effect: "fade-up" },
-    { selector: ".tech-item", effect: "fade-up" },
-    { selector: ".timeline .tl-item", effect: "fade-up" },
-    { selector: ".music-panel, .music-card", effect: "fade-up" }
+    {
+      selector: ".section",
+      effect: "fade-up"
+    },
+    {
+      selector: ".service-card",
+      effect: "fade-up"
+    },
+    {
+      selector: ".app-card",
+      effect: "fade-up"
+    },
+    {
+      selector: ".project-card",
+      effect: "fade-up"
+    },
+    {
+      selector: ".tech-item",
+      effect: "fade-up"
+    },
+    {
+      selector: ".timeline .tl-item",
+      effect: "fade-up"
+    },
+    {
+      selector: ".music-panel, .music-card",
+      effect: "fade-up"
+    }
   ];
 
   const revealTargets = [];
 
-  revealConfig.forEach(cfg => {
-    document.querySelectorAll(cfg.selector).forEach(el => {
-      el.dataset.srEffect = cfg.effect;
-      el.style.opacity = "0";
-      el.style.transform = "translateY(24px)";
-      el.style.transition = "opacity 0.7s ease-out, transform 0.7s ease-out";
-      revealTargets.push(el);
-    });
+  revealConfig.forEach(config => {
+    document
+      .querySelectorAll(config.selector)
+      .forEach(element => {
+        element.dataset.srEffect = config.effect;
+
+        element.style.opacity = "0";
+        element.style.transform =
+          "translateY(24px)";
+
+        element.style.transition =
+          "opacity 0.7s ease-out, " +
+          "transform 0.7s ease-out";
+
+        revealTargets.push(element);
+      });
   });
 
   if ("IntersectionObserver" in window) {
-    const srObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-            srObserver.unobserve(el);
-          }
-        });
-      },
-      {
-        threshold: 0.15
-      }
-    );
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
 
-    revealTargets.forEach(el => srObserver.observe(el));
+            const element = entry.target;
+
+            element.style.opacity = "1";
+            element.style.transform =
+              "translateY(0)";
+
+            revealObserver.unobserve(element);
+          });
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+    revealTargets.forEach(element => {
+      revealObserver.observe(element);
+    });
   } else {
-    // fallback simple
-    revealTargets.forEach(el => {
-      el.style.opacity = "1";
-      el.style.transform = "translateY(0)";
+    // Compatibilidad con navegadores antiguos
+    revealTargets.forEach(element => {
+      element.style.opacity = "1";
+      element.style.transform = "translateY(0)";
     });
   }
-
-  // ---------------------------------------------------
+    // ---------------------------------------------------
   // 4) PARALLAX DEL HOLOGRAMA
   // ---------------------------------------------------
   const heroHoloFrame =
@@ -193,35 +269,63 @@ document.addEventListener("DOMContentLoaded", () => {
   if (heroHoloFrame && !prefersReducedMotion) {
     let parallaxEnabled = window.innerWidth > 900;
 
-    function handleParallax(e) {
+    function handleParallax(event) {
       if (!parallaxEnabled) return;
 
-      const rect = heroHoloFrame.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 a 0.5
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const rect =
+        heroHoloFrame.getBoundingClientRect();
 
-      const maxTranslate = 10; // px
-      const tx = -x * maxTranslate;
-      const ty = -y * maxTranslate;
+      const x =
+        (event.clientX - rect.left) /
+          rect.width -
+        0.5;
 
-      heroHoloFrame.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      const y =
+        (event.clientY - rect.top) /
+          rect.height -
+        0.5;
+
+      const maxTranslate = 10;
+
+      const translateX = -x * maxTranslate;
+      const translateY = -y * maxTranslate;
+
+      heroHoloFrame.style.transform =
+        `translate3d(
+          ${translateX}px,
+          ${translateY}px,
+          0
+        )`;
     }
 
     function resetParallax() {
-      heroHoloFrame.style.transform = "translate3d(0, 0, 0)";
+      heroHoloFrame.style.transform =
+        "translate3d(0, 0, 0)";
     }
 
-    window.addEventListener("mousemove", handleParallax);
-    heroHoloFrame.addEventListener("mouseleave", resetParallax);
+    window.addEventListener(
+      "mousemove",
+      handleParallax,
+      { passive: true }
+    );
+
+    heroHoloFrame.addEventListener(
+      "mouseleave",
+      resetParallax
+    );
 
     window.addEventListener("resize", () => {
-      parallaxEnabled = window.innerWidth > 900;
-      if (!parallaxEnabled) resetParallax();
+      parallaxEnabled =
+        window.innerWidth > 900;
+
+      if (!parallaxEnabled) {
+        resetParallax();
+      }
     });
   }
 
   // ---------------------------------------------------
-  // 5) BRILLO INTELIGENTE EN CARDS (hover reactivo)
+  // 5) BRILLO INTELIGENTE EN CARDS
   // ---------------------------------------------------
   const glowSelectors = [
     ".service-card",
@@ -231,20 +335,33 @@ document.addEventListener("DOMContentLoaded", () => {
     ".music-card"
   ];
 
-  const glowCards = document.querySelectorAll(glowSelectors.join(","));
+  const glowCards = document.querySelectorAll(
+    glowSelectors.join(",")
+  );
 
   glowCards.forEach(card => {
-    card.style.position = card.style.position || "relative";
-    card.style.overflow = card.style.overflow || "hidden";
+    card.style.position =
+      card.style.position || "relative";
 
-    card.addEventListener("mousemove", e => {
+    card.style.overflow =
+      card.style.overflow || "hidden";
+
+    card.addEventListener("mousemove", event => {
       const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-      // gradient suave según la posición del mouse
+      const x =
+        ((event.clientX - rect.left) /
+          rect.width) *
+        100;
+
+      const y =
+        ((event.clientY - rect.top) /
+          rect.height) *
+        100;
+
       card.style.backgroundImage = `
-        radial-gradient(circle at ${x}% ${y}%,
+        radial-gradient(
+          circle at ${x}% ${y}%,
           rgba(0, 225, 255, 0.18),
           rgba(255, 255, 255, 0.02)
         )
@@ -257,315 +374,1257 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ---------------------------------------------------
-  // 6) HEADER INTELIGENTE (blur / opacidad dinámicos)
-  // ---------------------------------------------------
-  const header = document.getElementById("header");
-  if (header) {
-    const baseBg = "rgba(5, 8, 18, ";
-    const baseShadow =
-      "0 6px 22px rgba(0, 0, 0, 0.45)";
-    const strongShadow =
-      "0 10px 30px rgba(0, 0, 0, 0.75)";
+// 6) HEADER INTELIGENTE · EFECTO BLIP
+// Desintegrar al bajar · Reconstruir al subir
+// ---------------------------------------------------
 
-    function updateHeader() {
-      const y = window.scrollY || window.pageYOffset;
-      const t = Math.min(y / 160, 1); // 0 → 1
+const siteHeader = document.getElementById("header");
 
-      const opacity = 0.55 + t * 0.35; // 0.55 a 0.9
-      header.style.background = `${baseBg}${opacity})`;
-      header.style.boxShadow =
-        t > 0.1 ? strongShadow : baseShadow;
-      header.style.backdropFilter = `blur(${14 + t * 4}px)`;
+if (siteHeader) {
+  let lastScrollY = Math.max(window.scrollY, 0);
+  let scrollTicking = false;
+  let headerAnimationTimer = null;
+  let headerState = "visible";
+
+  const TOP_LIMIT = 50;
+  const HIDE_AFTER = 110;
+  const DIRECTION_THRESHOLD = 6;
+
+  const BLIP_DURATION = 720;
+  const PARTICLE_COUNT = 75;
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  // -------------------------------------------------
+  // Crear partículas alrededor de todo el header
+  // -------------------------------------------------
+
+  function createHeaderBlipParticles(animationType) {
+    if (reducedMotion) return;
+
+    const headerRect =
+      siteHeader.getBoundingClientRect();
+
+    const fragment = document.createDocumentFragment();
+
+    for (let index = 0; index < PARTICLE_COUNT; index++) {
+      const particle = document.createElement("span");
+
+      particle.className =
+        `header-blip-particle ${animationType}`;
+
+      /*
+        Distribución aleatoria dentro del header.
+        Algunas partículas se concentran cerca del logo
+        para que el efecto se note mejor.
+      */
+      const logoZone = index < PARTICLE_COUNT * 0.35;
+
+      const positionX = logoZone
+        ? headerRect.left +
+          Math.random() *
+            Math.min(240, headerRect.width)
+        : headerRect.left +
+          Math.random() * headerRect.width;
+
+      const positionY =
+        headerRect.top +
+        Math.random() * headerRect.height;
+
+      /*
+        Movimiento horizontal dominante.
+        No sube el header: se dispersa lateralmente
+        y ligeramente en vertical.
+      */
+      const direction =
+        Math.random() > 0.5 ? 1 : -1;
+
+      const movementX =
+        direction * (30 + Math.random() * 130);
+
+      const movementY =
+        (Math.random() - 0.5) * 65;
+
+      const delay =
+        Math.random() * 170;
+
+      const size =
+        1.5 + Math.random() * 3.5;
+
+      const scale =
+        0.6 + Math.random() * 1.4;
+
+      particle.style.setProperty(
+        "--particle-x",
+        `${positionX}px`
+      );
+
+      particle.style.setProperty(
+        "--particle-y",
+        `${positionY}px`
+      );
+
+      particle.style.setProperty(
+        "--particle-move-x",
+        `${movementX}px`
+      );
+
+      particle.style.setProperty(
+        "--particle-move-y",
+        `${movementY}px`
+      );
+
+      particle.style.setProperty(
+        "--particle-delay",
+        `${delay}ms`
+      );
+
+      particle.style.setProperty(
+        "--particle-scale",
+        scale
+      );
+
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+
+      fragment.appendChild(particle);
     }
 
-    updateHeader();
-    window.addEventListener("scroll", updateHeader);
+    document.body.appendChild(fragment);
+
+    window.setTimeout(() => {
+      document
+        .querySelectorAll(
+          `.header-blip-particle.${animationType}`
+        )
+        .forEach(particle => particle.remove());
+    }, BLIP_DURATION + 250);
   }
-});
-// ==========================================================
-//  GITHUB PRO — Carrusel + Skeleton + Lenguajes + Estrellas
-// ==========================================================
 
-async function loadGithubRepos() {
-  const user = "CHALLCOJAREK";
-  const url = `https://api.github.com/users/${user}/repos?per_page=40`;
+  // -------------------------------------------------
+  // Ocultar con efecto blip
+  // -------------------------------------------------
 
-  const container = document.getElementById("github-carousel");
-
-  try {
-    const res = await fetch(url);
-    let repos = await res.json();
-
-    // Orden por estrellas y actividad
-    repos = repos
-      .filter(r => !r.fork)
-      .sort((a, b) => b.stargazers_count - a.stargazers_count);
-
-    container.innerHTML = ""; // limpiar skeletons
-
-    for (const repo of repos) {
-      const lang = repo.language ? repo.language : "Sin especificar";
-
-      const card = document.createElement("div");
-      card.className = "github-card";
-
-      card.innerHTML = `
-        <h4>${repo.name}</h4>
-        <p>${repo.description || "Repositorio sin descripción."}</p>
-
-        <span class="gh-lang">${lang}</span>
-
-        <p style="font-size:13px; color:var(--text-soft); margin-bottom:12px;">
-          ⭐ ${repo.stargazers_count} — Último push: ${repo.updated_at.slice(0,10)}
-        </p>
-
-        <a class="gh-link" href="${repo.html_url}" target="_blank">
-          <i class="fa-brands fa-github"></i> Ver repositorio
-        </a>
-      `;
-
-      container.appendChild(card);
+  function hideHeaderWithBlip() {
+    if (
+      headerState === "hidden" ||
+      headerState === "hiding"
+    ) {
+      return;
     }
 
-  } catch (err) {
-    console.error("Error cargando GitHub:", err);
+    headerState = "hiding";
+
+    window.clearTimeout(headerAnimationTimer);
+
+    siteHeader.classList.remove(
+      "header-visible",
+      "header-blip-in",
+      "header-hidden"
+    );
+
+    // Reinicia correctamente la animación CSS
+    void siteHeader.offsetWidth;
+
+    siteHeader.classList.add("header-blip-out");
+
+    createHeaderBlipParticles("blip-out");
+
+    headerAnimationTimer = window.setTimeout(() => {
+      siteHeader.classList.remove("header-blip-out");
+      siteHeader.classList.add("header-hidden");
+
+      headerState = "hidden";
+    }, reducedMotion ? 0 : BLIP_DURATION);
   }
+
+  // -------------------------------------------------
+  // Mostrar reconstruyendo las partículas
+  // -------------------------------------------------
+
+  function showHeaderWithBlip() {
+    if (
+      headerState === "visible" ||
+      headerState === "showing"
+    ) {
+      return;
+    }
+
+    headerState = "showing";
+
+    window.clearTimeout(headerAnimationTimer);
+
+    siteHeader.classList.remove(
+      "header-hidden",
+      "header-blip-out",
+      "header-visible"
+    );
+
+    // Reinicia correctamente la animación
+    void siteHeader.offsetWidth;
+
+    siteHeader.classList.add("header-blip-in");
+
+    createHeaderBlipParticles("blip-in");
+
+    headerAnimationTimer = window.setTimeout(() => {
+      siteHeader.classList.remove("header-blip-in");
+      siteHeader.classList.add("header-visible");
+
+      headerState = "visible";
+    }, reducedMotion ? 0 : BLIP_DURATION);
+  }
+
+  // -------------------------------------------------
+  // Scroll principal
+  // -------------------------------------------------
+
+  function updateHeaderVisibility() {
+    const currentScrollY = Math.max(window.scrollY, 0);
+
+    const scrollDifference =
+      currentScrollY - lastScrollY;
+
+    // Apariencia dinámica del cristal
+    const scrollProgress = Math.min(
+      currentScrollY / 180,
+      1
+    );
+
+    const backgroundOpacity =
+      0.55 + scrollProgress * 0.32;
+
+    const blurAmount =
+      14 + scrollProgress * 6;
+
+    siteHeader.style.background =
+      `rgba(5, 8, 18, ${backgroundOpacity})`;
+
+    siteHeader.style.boxShadow =
+      currentScrollY > TOP_LIMIT
+        ? "0 12px 34px rgba(0, 0, 0, 0.68)"
+        : "0 6px 22px rgba(0, 0, 0, 0.45)";
+
+    siteHeader.style.backdropFilter =
+      `blur(${blurAmount}px) saturate(135%)`;
+
+    siteHeader.style.webkitBackdropFilter =
+      `blur(${blurAmount}px) saturate(135%)`;
+
+    // Siempre visible al inicio
+    if (currentScrollY <= TOP_LIMIT) {
+      showHeaderWithBlip();
+    }
+
+    // Bajando: desintegrar
+    else if (
+      scrollDifference > DIRECTION_THRESHOLD &&
+      currentScrollY > HIDE_AFTER
+    ) {
+      hideHeaderWithBlip();
+    }
+
+    // Subiendo: reconstruir
+    else if (
+      scrollDifference < -DIRECTION_THRESHOLD
+    ) {
+      showHeaderWithBlip();
+    }
+
+    lastScrollY = currentScrollY;
+    scrollTicking = false;
+  }
+
+  // Estado inicial
+  siteHeader.classList.add("header-visible");
+  headerState = "visible";
+
+  updateHeaderVisibility();
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (scrollTicking) return;
+
+      scrollTicking = true;
+
+      window.requestAnimationFrame(
+        updateHeaderVisibility
+      );
+    },
+    { passive: true }
+  );
 }
+  // ==================================================
+  // 7) GITHUB PRO
+  // Carrusel + repositorios + estrellas
+  // ==================================================
 
-document.addEventListener("DOMContentLoaded", loadGithubRepos);
+  async function loadGithubRepos() {
+    const githubUser = "CHALLCOJAREK";
 
-// =========================
-// CERTIFICACIONES (Carrusel + Modal)
-// =========================
-const CERTS = [
-  {
-    title: "Certificado de Estudios",
-    desc: "Formación académica validada.",
-    img: "./Certificados/Certificado_Estudios_Jarek_Challco_page-0001.jpg"
-  },
-  {
-    title: "Certificado Negocios",
-    desc: "Formación en negocios y gestión.",
-    img: "./Certificados/CERTIFICADO_Negocios.jpg"
-  },
-  {
-    title: "Developer Rocketbot",
-    desc: "Desarrollo de automatizaciones empresariales.",
-    img: "./Certificados/Developer_Rocketbot.jpg"
-  },
-  {
-    title: "Diploma Nivel 1 Rocketbot",
-    desc: "Certificación oficial en automatización RPA.",
-    img: "./Certificados/diploma nivel 1_Rocketbot.png"
-  },
-  {
-    title: "Entrepreneurship",
-    desc: "Formación en mentalidad y estrategia empresarial.",
-    img: "./Certificados/Entrepreneurship.jpg"
-  },
-  {
-    title: "Getting Started with Cisco Packet Tracer",
-    desc: "Simulación y fundamentos de redes Cisco.",
-    img: "./Certificados/Getting_Started_with_Cisco_Packet_Tracer.jpg"
-  },
-  {
-    title: "Introduction to Cybersecurity",
-    desc: "Bases de seguridad informática.",
-    img: "./Certificados/Introduction_to_Cybersecurity.jpg"
-  },
-  {
-    title: "Introduction to IoT",
-    desc: "Fundamentos de Internet of Things.",
-    img: "./Certificados/Introduction_to_IoT.jpg"
-  },
-  {
-    title: "NDG Linux Unhatched",
-    desc: "Fundamentos de Linux.",
-    img: "./Certificados/NDG Linux Unhatched.jpg"
-  },
-  {
-    title: "Partner - NDG Linux Unhatched",
-    desc: "Validación adicional en entorno Linux.",
-    img: "./Certificados/Partner-_NDG_Linux_Unhatched.jpg"
+    const githubUrl =
+      `https://api.github.com/users/` +
+      `${githubUser}/repos?per_page=40`;
+
+    const githubContainer =
+      document.getElementById(
+        "github-carousel"
+      );
+
+    if (!githubContainer) return;
+
+    try {
+      const response = await fetch(
+        githubUrl,
+        {
+          headers: {
+            Accept:
+              "application/vnd.github+json"
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `GitHub respondió con estado ` +
+          `${response.status}`
+        );
+      }
+
+      const githubData =
+        await response.json();
+
+      const repositories =
+        Array.isArray(githubData)
+          ? githubData
+              .filter(repository => {
+                return !repository.fork;
+              })
+              .sort(
+                (
+                  firstRepository,
+                  secondRepository
+                ) => {
+                  const starDifference =
+                    (
+                      secondRepository
+                        .stargazers_count ||
+                      0
+                    ) -
+                    (
+                      firstRepository
+                        .stargazers_count ||
+                      0
+                    );
+
+                  if (starDifference !== 0) {
+                    return starDifference;
+                  }
+
+                  return (
+                    new Date(
+                      secondRepository.updated_at
+                    ) -
+                    new Date(
+                      firstRepository.updated_at
+                    )
+                  );
+                }
+              )
+          : [];
+
+      githubContainer.innerHTML = "";
+
+      if (!repositories.length) {
+        githubContainer.innerHTML = `
+          <p class="github-empty">
+            No se encontraron repositorios
+            públicos en este momento.
+          </p>
+        `;
+
+        return;
+      }
+
+      repositories.forEach(repository => {
+        const language =
+          repository.language ||
+          "Sin especificar";
+
+        const description =
+          repository.description ||
+          "Repositorio sin descripción.";
+
+        const updatedAt =
+          repository.updated_at
+            ? repository.updated_at.slice(
+                0,
+                10
+              )
+            : "Sin fecha";
+
+        const repositoryCard =
+          document.createElement("article");
+
+        repositoryCard.className =
+          "github-card";
+
+        repositoryCard.innerHTML = `
+          <h4>${repository.name}</h4>
+
+          <p>${description}</p>
+
+          <span class="gh-lang">
+            ${language}
+          </span>
+
+          <p
+            style="
+              font-size: 13px;
+              color: var(--text-soft);
+              margin-bottom: 12px;
+            "
+          >
+            ⭐ ${
+              repository
+                .stargazers_count || 0
+            }
+            — Último push:
+            ${updatedAt}
+          </p>
+
+          <a
+            class="gh-link"
+            href="${repository.html_url}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i
+              class="fa-brands fa-github"
+              aria-hidden="true"
+            ></i>
+
+            Ver repositorio
+          </a>
+        `;
+
+        githubContainer.appendChild(
+          repositoryCard
+        );
+      });
+    } catch (error) {
+      console.error(
+        "Error cargando GitHub:",
+        error
+      );
+
+      githubContainer.innerHTML = `
+        <p class="github-empty">
+          No fue posible cargar los
+          repositorios en este momento.
+        </p>
+      `;
+    }
   }
-];
 
-(function initCertifications() {
-  const carousel = document.getElementById("cert-carousel");
-  if (!carousel) return;
+  loadGithubRepos();
 
-  // Limpia skeletons
-  carousel.innerHTML = "";
+  // ==================================================
+  // 8) CERTIFICACIONES
+  // Carrusel + Modal
+  // ==================================================
 
-  // Render cards
-  CERTS.forEach((c, idx) => {
-    const card = document.createElement("div");
-    card.className = "cert-card";
-    card.setAttribute("tabindex", "0");
-    card.dataset.index = String(idx);
+  const CERTS = [
+    {
+      title: "Certificado de Estudios",
+      desc:
+        "Formación académica validada.",
+      img:
+        "./Certificados/" +
+        "Certificado_Estudios_" +
+        "Jarek_Challco_page-0001.jpg"
+    },
+    {
+      title: "Certificado Negocios",
+      desc:
+        "Formación en negocios y gestión.",
+      img:
+        "./Certificados/" +
+        "CERTIFICADO_Negocios.jpg"
+    },
+    {
+      title: "Developer Rocketbot",
+      desc:
+        "Desarrollo de automatizaciones " +
+        "empresariales.",
+      img:
+        "./Certificados/" +
+        "Developer_Rocketbot.jpg"
+    },
+    {
+      title:
+        "Diploma Nivel 1 Rocketbot",
+      desc:
+        "Certificación oficial en " +
+        "automatización RPA.",
+      img:
+        "./Certificados/" +
+        "diploma nivel 1_Rocketbot.png"
+    },
+    {
+      title: "Entrepreneurship",
+      desc:
+        "Formación en mentalidad y " +
+        "estrategia empresarial.",
+      img:
+        "./Certificados/" +
+        "Entrepreneurship.jpg"
+    },
+    {
+      title:
+        "Getting Started with " +
+        "Cisco Packet Tracer",
+      desc:
+        "Simulación y fundamentos " +
+        "de redes Cisco.",
+      img:
+        "./Certificados/" +
+        "Getting_Started_with_" +
+        "Cisco_Packet_Tracer.jpg"
+    },
+    {
+      title:
+        "Introduction to Cybersecurity",
+      desc:
+        "Bases de seguridad informática.",
+      img:
+        "./Certificados/" +
+        "Introduction_to_" +
+        "Cybersecurity.jpg"
+    },
+        {
+      title: "Introduction to IoT",
+      desc:
+        "Fundamentos de Internet of Things.",
+      img:
+        "./Certificados/" +
+        "Introduction_to_IoT.jpg"
+    },
+    {
+      title: "NDG Linux Unhatched",
+      desc:
+        "Fundamentos de Linux.",
+      img:
+        "./Certificados/" +
+        "NDG Linux Unhatched.jpg"
+    },
+    {
+      title:
+        "Partner - NDG Linux Unhatched",
+      desc:
+        "Validación adicional en " +
+        "entorno Linux.",
+      img:
+        "./Certificados/" +
+        "Partner-_NDG_Linux_Unhatched.jpg"
+    }
+  ];
 
-    card.innerHTML = `
-      <div class="cert-thumb">
-        <img src="${c.img}" alt="${c.title}">
-      </div>
-      <h4 class="cert-title">${c.title}</h4>
-      <p class="cert-desc">${c.desc}</p>
-    `;
+  // ---------------------------------------------------
+  // 9) MODAL DE CERTIFICACIONES
+  // ---------------------------------------------------
+  const certModal =
+    document.getElementById("cert-modal");
 
-    card.addEventListener("click", () => openCertModal(c));
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") openCertModal(c);
+  const certModalImg =
+    document.getElementById(
+      "cert-modal-img"
+    );
+
+  const certModalTitle =
+    document.getElementById(
+      "cert-modal-title"
+    );
+
+  const certModalDesc =
+    document.getElementById(
+      "cert-modal-desc"
+    );
+
+  const certModalClose =
+    document.getElementById(
+      "cert-modal-close"
+    );
+
+  function openCertModal(certificate) {
+    if (
+      !certModal ||
+      !certModalImg ||
+      !certModalTitle ||
+      !certModalDesc
+    ) {
+      return;
+    }
+
+    certModalImg.src =
+      certificate.img;
+
+    certModalImg.alt =
+      certificate.title;
+
+    certModalTitle.textContent =
+      certificate.title;
+
+    certModalDesc.textContent =
+      certificate.desc;
+
+    certModal.classList.add(
+      "is-open"
+    );
+
+    certModal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+    certModalClose?.focus();
+  }
+
+  function closeCertModal() {
+    if (!certModal) return;
+
+    certModal.classList.remove(
+      "is-open"
+    );
+
+    certModal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow =
+      "";
+  }
+
+  // ---------------------------------------------------
+  // 10) CARRUSEL DE CERTIFICACIONES
+  // ---------------------------------------------------
+  (function initCertifications() {
+    const certCarousel =
+      document.getElementById(
+        "cert-carousel"
+      );
+
+    if (!certCarousel) return;
+
+    certCarousel.innerHTML = "";
+
+    CERTS.forEach(
+      (certificate, index) => {
+        const certCard =
+          document.createElement("article");
+
+        certCard.className =
+          "cert-card";
+
+        certCard.setAttribute(
+          "tabindex",
+          "0"
+        );
+
+        certCard.setAttribute(
+          "role",
+          "button"
+        );
+
+        certCard.setAttribute(
+          "aria-label",
+          `Ver certificado: ` +
+            `${certificate.title}`
+        );
+
+        certCard.dataset.index =
+          String(index);
+
+        certCard.innerHTML = `
+          <div class="cert-thumb">
+            <img
+              src="${certificate.img}"
+              alt="${certificate.title}"
+              loading="lazy"
+            >
+          </div>
+
+          <h4 class="cert-title">
+            ${certificate.title}
+          </h4>
+
+          <p class="cert-desc">
+            ${certificate.desc}
+          </p>
+        `;
+
+        certCard.addEventListener(
+          "click",
+          () => {
+            openCertModal(certificate);
+          }
+        );
+
+        certCard.addEventListener(
+          "keydown",
+          event => {
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+              event.preventDefault();
+
+              openCertModal(
+                certificate
+              );
+            }
+          }
+        );
+
+        certCarousel.appendChild(
+          certCard
+        );
+      }
+    );
+
+    const certLeftButton =
+      document.querySelector(
+        ".cert-left"
+      );
+
+    const certRightButton =
+      document.querySelector(
+        ".cert-right"
+      );
+
+    function scrollCertificateCards(
+      direction = 1
+    ) {
+      const firstCard =
+        certCarousel.querySelector(
+          ".cert-card"
+        );
+
+      const cardWidth = firstCard
+        ? firstCard
+            .getBoundingClientRect()
+            .width
+        : 282;
+
+      const gap = 18;
+      const step = cardWidth + gap;
+
+      certCarousel.scrollBy({
+        left: step * direction,
+        behavior: "smooth"
+      });
+    }
+
+    certLeftButton?.addEventListener(
+      "click",
+      () => {
+        scrollCertificateCards(-1);
+      }
+    );
+
+    certRightButton?.addEventListener(
+      "click",
+      () => {
+        scrollCertificateCards(1);
+      }
+    );
+
+    // -----------------------------------------------
+    // Drag horizontal con mouse
+    // -----------------------------------------------
+    let isDragging = false;
+    let dragStartX = 0;
+    let initialScrollLeft = 0;
+
+    certCarousel.addEventListener(
+      "mousedown",
+      event => {
+        isDragging = true;
+
+        dragStartX = event.pageX;
+
+        initialScrollLeft =
+          certCarousel.scrollLeft;
+
+        certCarousel.classList.add(
+          "is-dragging"
+        );
+      }
+    );
+
+    window.addEventListener(
+      "mouseup",
+      () => {
+        isDragging = false;
+
+        certCarousel.classList.remove(
+          "is-dragging"
+        );
+      }
+    );
+
+    certCarousel.addEventListener(
+      "mouseleave",
+      () => {
+        isDragging = false;
+
+        certCarousel.classList.remove(
+          "is-dragging"
+        );
+      }
+    );
+
+    certCarousel.addEventListener(
+      "mousemove",
+      event => {
+        if (!isDragging) return;
+
+        event.preventDefault();
+
+        const movement =
+          (event.pageX - dragStartX) *
+          1.4;
+
+        certCarousel.scrollLeft =
+          initialScrollLeft - movement;
+      }
+    );
+  })();
+
+  certModalClose?.addEventListener(
+    "click",
+    closeCertModal
+  );
+
+  certModal?.addEventListener(
+    "click",
+    event => {
+      const clickedElement =
+        event.target;
+
+      if (
+        clickedElement instanceof
+          HTMLElement &&
+        clickedElement.dataset.close ===
+          "1"
+      ) {
+        closeCertModal();
+      }
+    }
+  );
+
+  // ---------------------------------------------------
+  // 11) CONTROLES DEL CARRUSEL GITHUB
+  // ---------------------------------------------------
+  const ghCarousel =
+    document.getElementById(
+      "github-carousel"
+    );
+
+  const ghLeftButton =
+    document.querySelector(
+      ".gh-left"
+    );
+
+  const ghRightButton =
+    document.querySelector(
+      ".gh-right"
+    );
+
+  if (ghCarousel) {
+    ghLeftButton?.addEventListener(
+      "click",
+      () => {
+        ghCarousel.scrollBy({
+          left: -350,
+          behavior: "smooth"
+        });
+      }
+    );
+
+    ghRightButton?.addEventListener(
+      "click",
+      () => {
+        ghCarousel.scrollBy({
+          left: 350,
+          behavior: "smooth"
+        });
+      }
+    );
+
+    // -----------------------------------------------
+    // Auto-scroll pausado al interactuar
+    // -----------------------------------------------
+    let githubAutoScrollPaused =
+      false;
+
+    function pauseGithubAutoScroll() {
+      githubAutoScrollPaused = true;
+    }
+
+    function resumeGithubAutoScroll() {
+      githubAutoScrollPaused = false;
+    }
+
+    ghCarousel.addEventListener(
+      "mouseenter",
+      pauseGithubAutoScroll
+    );
+
+    ghCarousel.addEventListener(
+      "mouseleave",
+      resumeGithubAutoScroll
+    );
+
+    ghCarousel.addEventListener(
+      "focusin",
+      pauseGithubAutoScroll
+    );
+
+    ghCarousel.addEventListener(
+      "focusout",
+      resumeGithubAutoScroll
+    );
+
+    ghCarousel.addEventListener(
+      "touchstart",
+      pauseGithubAutoScroll,
+      {
+        passive: true
+      }
+    );
+
+    ghCarousel.addEventListener(
+      "touchend",
+      resumeGithubAutoScroll,
+      {
+        passive: true
+      }
+    );
+
+    window.setInterval(() => {
+      if (
+        githubAutoScrollPaused ||
+        document.hidden ||
+        prefersReducedMotion
+      ) {
+        return;
+      }
+
+      const reachedEnd =
+        ghCarousel.scrollLeft +
+          ghCarousel.clientWidth >=
+        ghCarousel.scrollWidth - 8;
+
+      ghCarousel.scrollTo({
+        left: reachedEnd
+          ? 0
+          : ghCarousel.scrollLeft +
+            320,
+
+        behavior: "smooth"
+      });
+    }, 5000);
+  }
+
+  // ---------------------------------------------------
+  // 12) SCROLLREVEAL EXTERNO PARA GITHUB
+  // ---------------------------------------------------
+  if (
+    typeof window.ScrollReveal ===
+    "function"
+  ) {
+    const githubReveal =
+      window.ScrollReveal();
+
+    githubReveal.reveal(
+      "#github .section-title",
+      {
+        distance: "40px",
+        duration: 900,
+        origin: "bottom"
+      }
+    );
+
+    githubReveal.reveal(
+      "#github .section-intro",
+      {
+        distance: "40px",
+        duration: 1000,
+        origin: "bottom",
+        delay: 150
+      }
+    );
+
+    githubReveal.reveal(
+      "#github .github-wrapper",
+      {
+        distance: "60px",
+        duration: 1100,
+        origin: "bottom",
+        delay: 200
+      }
+    );
+  }
+
+  // ---------------------------------------------------
+  // 13) MODAL DEL CV
+  // ---------------------------------------------------
+  const cvOpen =
+    document.getElementById(
+      "cv-open"
+    );
+
+  const cvModal =
+    document.getElementById(
+      "cv-modal"
+    );
+
+  const cvClose =
+    document.getElementById(
+      "cv-modal-close"
+    );
+
+  const cvFrame =
+    document.getElementById(
+      "cv-frame"
+    );
+
+  const CV_URL =
+    "./docs/Jarek_CV_2025.pdf";
+
+  function openCV() {
+    if (!cvModal || !cvFrame) {
+      return;
+    }
+
+    cvFrame.src =
+      `${CV_URL}` +
+      "#toolbar=0&navpanes=0";
+
+    cvModal.classList.add(
+      "is-open"
+    );
+
+    cvModal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+    cvClose?.focus();
+  }
+
+  function closeCV() {
+    if (!cvModal || !cvFrame) {
+      return;
+    }
+
+    cvModal.classList.remove(
+      "is-open"
+    );
+
+    cvModal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    cvFrame.src = "";
+
+    document.body.style.overflow =
+      "";
+  }
+
+  cvOpen?.addEventListener(
+    "click",
+    openCV
+  );
+
+  cvOpen?.addEventListener(
+    "keydown",
+    event => {
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+        event.preventDefault();
+        openCV();
+      }
+    }
+  );
+
+  cvClose?.addEventListener(
+    "click",
+    closeCV
+  );
+
+  cvModal?.addEventListener(
+    "click",
+    event => {
+      const clickedElement =
+        event.target;
+
+      if (
+        clickedElement instanceof
+          HTMLElement &&
+        clickedElement.dataset.close ===
+          "1"
+      ) {
+        closeCV();
+      }
+    }
+  );
+    // ---------------------------------------------------
+  // 14) CONTROL GLOBAL DE TECLADO
+  // ---------------------------------------------------
+  window.addEventListener(
+    "keydown",
+    event => {
+      if (event.key !== "Escape") {
+        return;
+      }
+
+      if (
+        certModal?.classList.contains(
+          "is-open"
+        )
+      ) {
+        closeCertModal();
+      }
+
+      if (
+        cvModal?.classList.contains(
+          "is-open"
+        )
+      ) {
+        closeCV();
+      }
+    }
+  );
+
+  // ---------------------------------------------------
+  // 15) CONTROL DE VISIBILIDAD DE PÁGINA
+  // ---------------------------------------------------
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      /*
+        Evita movimientos o efectos innecesarios
+        cuando la pestaña no está activa.
+      */
+
+      if (document.hidden) {
+        siteHeader?.classList.remove(
+          "header-visible"
+        );
+      } else {
+        siteHeader?.classList.remove(
+          "header-hidden"
+        );
+
+        siteHeader?.classList.add(
+          "header-visible"
+        );
+      }
+    }
+  );
+
+  // ---------------------------------------------------
+  // 16) ENLACES EXTERNOS SEGUROS
+  // ---------------------------------------------------
+  document
+    .querySelectorAll(
+      'a[target="_blank"]'
+    )
+    .forEach(link => {
+      const currentRel =
+        link.getAttribute("rel") || "";
+
+      const relValues =
+        new Set(
+          currentRel
+            .split(" ")
+            .filter(Boolean)
+        );
+
+      relValues.add("noopener");
+      relValues.add("noreferrer");
+
+      link.setAttribute(
+        "rel",
+        [...relValues].join(" ")
+      );
     });
 
-    carousel.appendChild(card);
-  });
+  // ---------------------------------------------------
+  // 17) ANCLAJES CON SCROLL SUAVE
+  // ---------------------------------------------------
+  document
+    .querySelectorAll(
+      'a[href^="#"]'
+    )
+    .forEach(anchor => {
+      anchor.addEventListener(
+        "click",
+        event => {
+          const targetId =
+            anchor.getAttribute("href");
 
-  // Buttons scroll
-  const btnLeft = document.querySelector(".cert-left");
-  const btnRight = document.querySelector(".cert-right");
+          if (
+            !targetId ||
+            targetId === "#"
+          ) {
+            return;
+          }
 
-  const scrollByCards = (dir = 1) => {
-    const card = carousel.querySelector(".cert-card");
-    const step = card ? (card.getBoundingClientRect().width + 18) : 300;
-    carousel.scrollBy({ left: step * dir, behavior: "smooth" });
-  };
+          const targetElement =
+            document.querySelector(
+              targetId
+            );
 
-  btnLeft?.addEventListener("click", () => scrollByCards(-1));
-  btnRight?.addEventListener("click", () => scrollByCards(1));
+          if (!targetElement) return;
 
-  // Drag to scroll (se siente pro)
-  let isDown = false;
-  let startX = 0;
-  let scrollLeft = 0;
+          event.preventDefault();
 
-  carousel.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.pageX;
-    scrollLeft = carousel.scrollLeft;
-  });
+          targetElement.scrollIntoView({
+            behavior:
+              prefersReducedMotion
+                ? "auto"
+                : "smooth",
 
-  window.addEventListener("mouseup", () => (isDown = false));
+            block: "start"
+          });
+        }
+      );
+    });
 
-  carousel.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const walk = (e.pageX - startX) * 1.4;
-    carousel.scrollLeft = scrollLeft - walk;
-  });
-})();
+  // ---------------------------------------------------
+  // 18) ESTADO FINAL DE LA APLICACIÓN
+  // ---------------------------------------------------
+  document.body.classList.add(
+    "js-ready"
+  );
 
-// Modal
-const certModal = document.getElementById("cert-modal");
-const certModalImg = document.getElementById("cert-modal-img");
-const certModalTitle = document.getElementById("cert-modal-title");
-const certModalDesc = document.getElementById("cert-modal-desc");
-const certModalClose = document.getElementById("cert-modal-close");
-
-function openCertModal(c) {
-  if (!certModal) return;
-  certModalImg.src = c.img;
-  certModalTitle.textContent = c.title;
-  certModalDesc.textContent = c.desc;
-  certModal.classList.add("is-open");
-  certModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeCertModal() {
-  if (!certModal) return;
-  certModal.classList.remove("is-open");
-  certModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-
-certModalClose?.addEventListener("click", closeCertModal);
-certModal?.addEventListener("click", (e) => {
-  if (e.target && e.target.dataset && e.target.dataset.close === "1") closeCertModal();
-});
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeCertModal();
-});
-
-
-// ==========================================================
-//  Flechas de scroll
-// ==========================================================
-
-const ghCarousel = document.getElementById("github-carousel");
-
-document.querySelector(".gh-left").addEventListener("click", () => {
-  ghCarousel.scrollBy({ left: -350, behavior: "smooth" });
-});
-document.querySelector(".gh-right").addEventListener("click", () => {
-  ghCarousel.scrollBy({ left: 350, behavior: "smooth" });
-});
-
-
-// ==========================================================
-//  Auto-scroll suave cada 5s
-// ==========================================================
-
-setInterval(() => {
-  ghCarousel.scrollBy({ left: 320, behavior: "smooth" });
-}, 5000);
-
-
-// ==========================================================
-//  ScrollReveal para animar entrada
-// ==========================================================
-
-ScrollReveal().reveal("#github .section-title", {
-  distance: "40px",
-  duration: 900,
-  origin: "bottom"
-});
-ScrollReveal().reveal("#github .section-intro", {
-  distance: "40px",
-  duration: 1000,
-  origin: "bottom",
-  delay: 150
-});
-ScrollReveal().reveal("#github .github-wrapper", {
-  distance: "60px",
-  duration: 1100,
-  origin: "bottom",
-  delay: 200
-});
-// =========================
-// CV MODAL (thumbnail -> pdf)
-// =========================
-const cvOpen = document.getElementById("cv-open");
-const cvModal = document.getElementById("cv-modal");
-const cvClose = document.getElementById("cv-modal-close");
-const cvFrame = document.getElementById("cv-frame");
-
-const CV_URL = "./docs/Jarek_CV_2025.pdf";
-
-function openCV(){
-  if (!cvModal || !cvFrame) return;
-  cvFrame.src = CV_URL + "#toolbar=0&navpanes=0";
-  cvModal.classList.add("is-open");
-  cvModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-}
-
-function closeCV(){
-  if (!cvModal || !cvFrame) return;
-  cvModal.classList.remove("is-open");
-  cvModal.setAttribute("aria-hidden", "true");
-  cvFrame.src = "";
-  document.body.style.overflow = "";
-}
-
-cvOpen?.addEventListener("click", openCV);
-cvOpen?.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" || e.key === " ") openCV();
-});
-
-cvClose?.addEventListener("click", closeCV);
-cvModal?.addEventListener("click", (e) => {
-  if (e.target && e.target.dataset && e.target.dataset.close === "1") closeCV();
-});
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeCV();
+  console.info(
+    "Jarek Neotech UI iniciada correctamente."
+  );
 });
